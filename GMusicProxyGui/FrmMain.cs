@@ -26,7 +26,9 @@ namespace GMusicProxyGui
                 return;
             ClearResultList();
             List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicBySearch(title, artist);
-            foreach(MusicEntry musicEntry in musicEntrys)
+            if (musicEntrys.Count == 0)
+                return;
+            foreach (MusicEntry musicEntry in musicEntrys)
             {
                 AddResultListItem(musicEntry);
             }

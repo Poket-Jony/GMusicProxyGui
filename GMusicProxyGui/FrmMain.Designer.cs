@@ -214,6 +214,8 @@
             // 
             // progressBarDownload
             // 
+            this.progressBarDownload.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBarDownload.Enabled = false;
             this.progressBarDownload.Location = new System.Drawing.Point(5, 3);
             this.progressBarDownload.Name = "progressBarDownload";
