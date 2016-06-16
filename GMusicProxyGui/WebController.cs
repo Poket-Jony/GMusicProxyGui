@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.IO;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace GMusicProxyGui
 {
@@ -30,7 +31,8 @@ namespace GMusicProxyGui
             }
             catch(Exception e)
             {
-                throw e;
+                MessageBox.Show("Error at RequestString:\n" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return null;
             }
         }
 

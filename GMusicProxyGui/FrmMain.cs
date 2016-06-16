@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Threading;
 
 namespace GMusicProxyGui
 {
@@ -142,14 +141,10 @@ namespace GMusicProxyGui
                             item.ImageKey = musicEntry.ProxyId;
                         }
                     }
-                    catch (OperationCanceledException)
-                    {
-                        return;
-                    }
                     catch (Exception e)
                     {
-                        MessageBox.Show(this, "Error:\n" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        return;
+                        MessageBox.Show(this, "Error at item " + progressBarDownload.Value + ":\n" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
                     }
                 }
                 progressBarDownload.Value = 0;

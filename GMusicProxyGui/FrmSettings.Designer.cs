@@ -35,6 +35,9 @@
             this.txtBoxProxyUrl = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnToDefault = new System.Windows.Forms.Button();
+            this.lblMusicCount = new System.Windows.Forms.Label();
+            this.numMusicCount = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numMusicCount)).BeginInit();
             this.SuspendLayout();
             // 
             // lblMusicPath
@@ -81,7 +84,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(252, 93);
+            this.btnSave.Location = new System.Drawing.Point(252, 142);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 5;
@@ -91,7 +94,7 @@
             // 
             // btnToDefault
             // 
-            this.btnToDefault.Location = new System.Drawing.Point(138, 93);
+            this.btnToDefault.Location = new System.Drawing.Point(138, 142);
             this.btnToDefault.Name = "btnToDefault";
             this.btnToDefault.Size = new System.Drawing.Size(75, 23);
             this.btnToDefault.TabIndex = 6;
@@ -99,12 +102,40 @@
             this.btnToDefault.UseVisualStyleBackColor = true;
             this.btnToDefault.Click += new System.EventHandler(this.btnToDefault_Click);
             // 
+            // lblMusicCount
+            // 
+            this.lblMusicCount.AutoSize = true;
+            this.lblMusicCount.Location = new System.Drawing.Point(13, 107);
+            this.lblMusicCount.Name = "lblMusicCount";
+            this.lblMusicCount.Size = new System.Drawing.Size(96, 13);
+            this.lblMusicCount.TabIndex = 7;
+            this.lblMusicCount.Text = "Music result count:";
+            // 
+            // numMusicCount
+            // 
+            this.numMusicCount.Location = new System.Drawing.Point(138, 105);
+            this.numMusicCount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numMusicCount.Name = "numMusicCount";
+            this.numMusicCount.Size = new System.Drawing.Size(189, 20);
+            this.numMusicCount.TabIndex = 8;
+            this.numMusicCount.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
             // FrmSettings
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 128);
+            this.ClientSize = new System.Drawing.Size(370, 175);
+            this.Controls.Add(this.numMusicCount);
+            this.Controls.Add(this.lblMusicCount);
             this.Controls.Add(this.btnToDefault);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtBoxProxyUrl);
@@ -116,6 +147,7 @@
             this.Name = "FrmSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Settings";
+            ((System.ComponentModel.ISupportInitialize)(this.numMusicCount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,5 +162,7 @@
         private System.Windows.Forms.TextBox txtBoxProxyUrl;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnToDefault;
+        private System.Windows.Forms.Label lblMusicCount;
+        private System.Windows.Forms.NumericUpDown numMusicCount;
     }
 }
