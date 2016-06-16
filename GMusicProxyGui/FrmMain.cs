@@ -26,7 +26,7 @@ namespace GMusicProxyGui
                 return;
             ClearResultList();
             List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicBySearch(title, artist);
-            if (musicEntrys.Count == 0)
+            if (musicEntrys == null || musicEntrys.Count == 0)
                 return;
             foreach (MusicEntry musicEntry in musicEntrys)
             {
@@ -123,6 +123,7 @@ namespace GMusicProxyGui
                 progressBarDownload.Enabled = true;
                 foreach (ListViewItem item in downloadItems)
                 {
+                    progressBarDownload.Value++;
                     MusicEntry musicEntry = (MusicEntry)item.Tag;
                     musicEntry.UpdateFilePath();
                     try
@@ -139,7 +140,11 @@ namespace GMusicProxyGui
                     {
                         return;
                     }
-                    progressBarDownload.Value++;
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(this, "Error:\n" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
                 }
                 progressBarDownload.Value = 0;
                 progressBarDownload.Enabled = false;

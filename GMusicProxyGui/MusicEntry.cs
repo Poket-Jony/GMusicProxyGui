@@ -36,7 +36,13 @@ namespace GMusicProxyGui
 
         public void UpdateFilePath()
         {
-            FilePath = Path.Combine(Properties.Settings.Default.musicPath, string.Format("{0} - {1}.mp3", Artist, Title));
+            string path = CleanFileName(string.Format("{0} - {1}.mp3", Artist, Title));
+            FilePath = Path.Combine(Properties.Settings.Default.musicPath, path);
+        }
+
+        private string CleanFileName(string fileName)
+        {
+            return Path.GetInvalidFileNameChars().Aggregate(fileName, (current, c) => current.Replace(c.ToString(), string.Empty));
         }
 
         public void UpdateIdFromProxyPath()
