@@ -46,5 +46,17 @@ namespace GMusicProxyGui.Properties {
                 this["musicPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public int resultCount {
+            get {
+                return ((int)(this["resultCount"]));
+            }
+            set {
+                this["resultCount"] = value;
+            }
+        }
     }
 }

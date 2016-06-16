@@ -26,7 +26,7 @@ namespace GMusicProxyGui
                 return;
             ClearResultList();
             Cursor.Current = Cursors.WaitCursor;
-            List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicBySearch(title, artist);
+            List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicBySearch(title, artist, Properties.Settings.Default.resultCount);
             Cursor.Current = Cursors.Default;
             if (musicEntrys == null || musicEntrys.Count == 0)
                 return;
@@ -67,7 +67,7 @@ namespace GMusicProxyGui
             Cursor.Current = Cursors.Default;
             if (string.IsNullOrEmpty(artistId))
                 return;
-            List<MusicEntry> musicEntrys = WebApi.Instance.GetArtistTopTracksById(artistId);
+            List<MusicEntry> musicEntrys = WebApi.Instance.GetArtistTopTracksById(artistId, Properties.Settings.Default.resultCount);
             foreach (MusicEntry musicEntry in musicEntrys)
             {
                 AddResultListItem(musicEntry);
