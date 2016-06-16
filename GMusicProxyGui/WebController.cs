@@ -24,7 +24,9 @@ namespace GMusicProxyGui
             {
                 WebClient client = new WebClient();
                 client.Encoding = Encoding.UTF8;
-                return client.DownloadString(Uri.EscapeUriString(url + request + BuildGetUrl(parameters)));
+                string req = Uri.EscapeUriString(url + request + BuildGetUrl(parameters));
+                Console.WriteLine(req);
+                return client.DownloadString(req);
             }
             catch(Exception e)
             {
@@ -38,6 +40,7 @@ namespace GMusicProxyGui
             {
                 WebClient client = new WebClient();
                 client.Encoding = Encoding.UTF8;
+                Console.WriteLine(Uri.EscapeUriString(url));
                 await client.DownloadFileTaskAsync(new Uri(Uri.EscapeUriString(url)), fileName);
             }
             catch (Exception e)
@@ -45,7 +48,8 @@ namespace GMusicProxyGui
                 throw e;
             }
         }
-        public async void RequestFile(string request, Dictionary<string, string> parameters, string fileName)
+
+        /*public async void RequestFile(string request, Dictionary<string, string> parameters, string fileName)
         {
             try
             {
@@ -57,7 +61,7 @@ namespace GMusicProxyGui
             {
                 throw e;
             }
-        }
+        }*/
 
         private string BuildGetUrl(Dictionary<string, string> parameters)
         {
