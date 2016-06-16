@@ -25,7 +25,9 @@ namespace GMusicProxyGui
             if (!downloadAvaible)
                 return;
             ClearResultList();
+            Cursor.Current = Cursors.WaitCursor;
             List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicBySearch(title, artist);
+            Cursor.Current = Cursors.Default;
             if (musicEntrys == null || musicEntrys.Count == 0)
                 return;
             foreach (MusicEntry musicEntry in musicEntrys)
@@ -41,7 +43,9 @@ namespace GMusicProxyGui
             if (!downloadAvaible)
                 return;
             ClearResultList();
+            Cursor.Current = Cursors.WaitCursor;
             string albumId = WebApi.Instance.GetIdBySearch(WebApi.SearchType.album, title, artist);
+            Cursor.Current = Cursors.Default;
             if (string.IsNullOrEmpty(albumId))
                 return;
             List<MusicEntry> musicEntrys = WebApi.Instance.GetAlbumById(albumId);
@@ -58,7 +62,9 @@ namespace GMusicProxyGui
             if (!downloadAvaible)
                 return;
             ClearResultList();
+            Cursor.Current = Cursors.WaitCursor;
             string artistId = WebApi.Instance.GetIdBySearch(WebApi.SearchType.artist, artist, artist);
+            Cursor.Current = Cursors.Default;
             if (string.IsNullOrEmpty(artistId))
                 return;
             List<MusicEntry> musicEntrys = WebApi.Instance.GetArtistTopTracksById(artistId);
@@ -188,6 +194,32 @@ namespace GMusicProxyGui
                 else
                     DownloadListItems();
             }
+        }
+
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(this, "Syntax:\nArtist1 - Title1\nArtist2 - Title2\n...", "Syntax help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Select a list file to import:";
+            if(dialog.ShowDialog() == DialogResult.OK)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                SearchList(new ListImporter(dialog.FileName, ListImporter.ListType.ArtistAndTitle));
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        private void SearchList(ListImporter import)
+        {
+            if (!downloadAvaible)
+                return;
+            ClearResultList();
+            foreach (MusicEntry musicEntry in import.MusicList)
+            {
+                AddResultListItem(musicEntry);
+            }
+            listViewResult.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            tabControlSR.SelectedTab = tabPageResult;
         }
     }
 }
