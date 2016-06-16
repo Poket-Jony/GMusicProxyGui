@@ -80,14 +80,14 @@ namespace GMusicProxyGui
             return MusicEntry.GetMusicEntrysByM3U(response);
         }
 
-        public MusicEntry GetSongById(string id)
+        /*public MusicEntry GetSongById(string id)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
             data.Add("id", id);
             string response = webController.RequestString("get_song", data);
             List<MusicEntry> music = MusicEntry.GetMusicEntrysByM3U(response);
             return music != null ? music.First() : null;
-        }
+        }*/
 
         public List<MusicEntry> GetArtistTopTracksById(string id)
         {

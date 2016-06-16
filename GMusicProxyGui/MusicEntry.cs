@@ -20,6 +20,17 @@ namespace GMusicProxyGui
             ProxyPath = proxyPath;
         }
 
+        public MusicEntry(string artist, string title)
+        {
+            Artist = artist;
+            Title = title;
+        }
+
+        public MusicEntry(string proxyId)
+        {
+            ProxyId = proxyId;
+        }
+
         public TimeSpan Duration { get; set; }
         public string Artist { get; set; }
         public string Album { get; set; }
