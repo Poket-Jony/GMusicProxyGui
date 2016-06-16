@@ -28,7 +28,7 @@ namespace GMusicProxyGui
             webController = new WebController(Properties.Settings.Default.proxyUrl);
         }
 
-        public List<MusicEntry> GetMusicBySearch(string title, string artist)
+        public List<MusicEntry> GetMusicBySearch(string title, string artist, int count = 20)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
             data.Add("type", "matches");
@@ -37,7 +37,7 @@ namespace GMusicProxyGui
             if(!string.IsNullOrEmpty(artist))
                 data.Add("artist", artist);
             data.Add("exact", "no");
-            data.Add("num_tracks", "20");
+            data.Add("num_tracks", count.ToString());
             string response = webController.RequestString("get_by_search", data);
             return MusicEntry.GetMusicEntrysByM3U(response);
         }
@@ -89,12 +89,12 @@ namespace GMusicProxyGui
             return music != null ? music.First() : null;
         }*/
 
-        public List<MusicEntry> GetArtistTopTracksById(string id)
+        public List<MusicEntry> GetArtistTopTracksById(string id, int count = 20)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
             data.Add("id", id);
             data.Add("type", "song");
-            data.Add("num_tracks", "20");
+            data.Add("num_tracks", count.ToString());
             string response = webController.RequestString("get_top_tracks_artist", data);
             return MusicEntry.GetMusicEntrysByM3U(response);
         }

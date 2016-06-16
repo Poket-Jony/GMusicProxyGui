@@ -79,7 +79,7 @@ namespace GMusicProxyGui
                     case ListType.TitleAndArtist:
                     case ListType.ArtistAndTitle:
                         {
-                            List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicBySearch(entry.Title, entry.Artist);
+                            List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicBySearch(entry.Title, entry.Artist, 1);
                             if (musicEntrys == null || musicEntrys.Count == 0)
                                 continue;
                             musicList.Add(musicEntrys.First());
