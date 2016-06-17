@@ -191,19 +191,6 @@ namespace GMusicProxyGui
             }
         }
 
-        private void importToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(this, "Syntax:\nArtist1 - Title1\nArtist2 - Title2\n...", "Syntax help", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Title = "Select a list file to import:";
-            if(dialog.ShowDialog() == DialogResult.OK)
-            {
-                Cursor.Current = Cursors.WaitCursor;
-                SearchList(new ListImporter(dialog.FileName, ListImporter.ListType.ArtistAndTitle));
-                Cursor.Current = Cursors.Default;
-            }
-        }
-
         private void SearchList(ListImporter import)
         {
             if (!downloadAvaible)
@@ -215,6 +202,32 @@ namespace GMusicProxyGui
             }
             listViewResult.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             tabControlSR.SelectedTab = tabPageResult;
+        }
+
+        private void artistTitleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(this, "Syntax:\nArtist1 - Title1\nArtist2 - Title2\n...", "Syntax help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Select a list file to import:";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                SearchList(new ListImporter(dialog.FileName, ListImporter.ListType.ArtistAndTitle));
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        private void titleArtistToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(this, "Syntax:\nTitle1 - Artist1\nTitle2 - Artist2\n...", "Syntax help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Select a list file to import:";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                SearchList(new ListImporter(dialog.FileName, ListImporter.ListType.TitleAndArtist));
+                Cursor.Current = Cursors.Default;
+            }
         }
     }
 }

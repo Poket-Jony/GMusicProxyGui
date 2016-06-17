@@ -32,6 +32,9 @@
             this.menu = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.artistTitleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.titleArtistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlSR = new System.Windows.Forms.TabControl();
             this.tabPageSearch = new System.Windows.Forms.TabPage();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -48,7 +51,6 @@
             this.pnlResultControls = new System.Windows.Forms.Panel();
             this.progressBarDownload = new System.Windows.Forms.ProgressBar();
             this.btnDownload = new System.Windows.Forms.Button();
-            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.tabControlSR.SuspendLayout();
             this.tabPageSearch.SuspendLayout();
@@ -81,6 +83,29 @@
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
+            // importToolStripMenuItem
+            // 
+            this.importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.artistTitleToolStripMenuItem,
+            this.titleArtistToolStripMenuItem});
+            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.importToolStripMenuItem.Text = "Import list";
+            // 
+            // artistTitleToolStripMenuItem
+            // 
+            this.artistTitleToolStripMenuItem.Name = "artistTitleToolStripMenuItem";
+            this.artistTitleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.artistTitleToolStripMenuItem.Text = "Artist - Title";
+            this.artistTitleToolStripMenuItem.Click += new System.EventHandler(this.artistTitleToolStripMenuItem_Click);
+            // 
+            // titleArtistToolStripMenuItem
+            // 
+            this.titleArtistToolStripMenuItem.Name = "titleArtistToolStripMenuItem";
+            this.titleArtistToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.titleArtistToolStripMenuItem.Text = "Title - Artist";
+            this.titleArtistToolStripMenuItem.Click += new System.EventHandler(this.titleArtistToolStripMenuItem_Click);
             // 
             // tabControlSR
             // 
@@ -235,13 +260,6 @@
             this.btnDownload.UseVisualStyleBackColor = true;
             this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
             // 
-            // importToolStripMenuItem
-            // 
-            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.importToolStripMenuItem.Text = "Import";
-            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
-            // 
             // FrmMain
             // 
             this.AcceptButton = this.btnSearch;
@@ -288,6 +306,8 @@
         private System.Windows.Forms.Button btnDownload;
         private System.Windows.Forms.ProgressBar progressBarDownload;
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem artistTitleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem titleArtistToolStripMenuItem;
     }
 }
 
