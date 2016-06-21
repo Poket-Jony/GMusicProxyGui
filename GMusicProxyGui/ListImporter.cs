@@ -44,6 +44,8 @@ namespace GMusicProxyGui
                             {
                                 Match match = regexLine.Match(line);
                                 string artist = match.Groups[1].Value;
+                                if (artist.Contains(';'))
+                                    artist = artist.Remove(artist.IndexOf(';'));
                                 string title = match.Groups[2].Value;
                                 mlist.Add(new MusicEntry(artist, title));
                             }
