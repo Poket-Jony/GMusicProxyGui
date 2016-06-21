@@ -44,18 +44,29 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.tabPageResult = new System.Windows.Forms.TabPage();
             this.listViewResult = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.imgDownloadListCover = new System.Windows.Forms.ImageList(this.components);
+            this.pnlResultControlls = new System.Windows.Forms.Panel();
+            this.btnAddDownload = new System.Windows.Forms.Button();
+            this.tabPageDownload = new System.Windows.Forms.TabPage();
+            this.listViewDownload = new System.Windows.Forms.ListView();
             this.columnHeaderTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderArtist = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderAlbum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.imgListCover = new System.Windows.Forms.ImageList(this.components);
-            this.pnlResultControls = new System.Windows.Forms.Panel();
+            this.pnlDownloadControls = new System.Windows.Forms.Panel();
             this.progressBarDownload = new System.Windows.Forms.ProgressBar();
             this.btnDownload = new System.Windows.Forms.Button();
+            this.imgResultListCover = new System.Windows.Forms.ImageList(this.components);
+            this.btnRemoveDownload = new System.Windows.Forms.Button();
             this.menu.SuspendLayout();
             this.tabControlSR.SuspendLayout();
             this.tabPageSearch.SuspendLayout();
             this.tabPageResult.SuspendLayout();
-            this.pnlResultControls.SuspendLayout();
+            this.pnlResultControlls.SuspendLayout();
+            this.tabPageDownload.SuspendLayout();
+            this.pnlDownloadControls.SuspendLayout();
             this.SuspendLayout();
             // 
             // menu
@@ -80,7 +91,7 @@
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
@@ -90,20 +101,20 @@
             this.artistTitleToolStripMenuItem,
             this.titleArtistToolStripMenuItem});
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.importToolStripMenuItem.Text = "Import list";
             // 
             // artistTitleToolStripMenuItem
             // 
             this.artistTitleToolStripMenuItem.Name = "artistTitleToolStripMenuItem";
-            this.artistTitleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.artistTitleToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.artistTitleToolStripMenuItem.Text = "Artist - Title";
             this.artistTitleToolStripMenuItem.Click += new System.EventHandler(this.artistTitleToolStripMenuItem_Click);
             // 
             // titleArtistToolStripMenuItem
             // 
             this.titleArtistToolStripMenuItem.Name = "titleArtistToolStripMenuItem";
-            this.titleArtistToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.titleArtistToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.titleArtistToolStripMenuItem.Text = "Title - Artist";
             this.titleArtistToolStripMenuItem.Click += new System.EventHandler(this.titleArtistToolStripMenuItem_Click);
             // 
@@ -111,6 +122,7 @@
             // 
             this.tabControlSR.Controls.Add(this.tabPageSearch);
             this.tabControlSR.Controls.Add(this.tabPageResult);
+            this.tabControlSR.Controls.Add(this.tabPageDownload);
             this.tabControlSR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlSR.Location = new System.Drawing.Point(0, 24);
             this.tabControlSR.Name = "tabControlSR";
@@ -183,33 +195,102 @@
             // tabPageResult
             // 
             this.tabPageResult.Controls.Add(this.listViewResult);
-            this.tabPageResult.Controls.Add(this.pnlResultControls);
+            this.tabPageResult.Controls.Add(this.pnlResultControlls);
             this.tabPageResult.Location = new System.Drawing.Point(4, 22);
             this.tabPageResult.Name = "tabPageResult";
             this.tabPageResult.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageResult.Size = new System.Drawing.Size(525, 361);
-            this.tabPageResult.TabIndex = 1;
+            this.tabPageResult.TabIndex = 2;
             this.tabPageResult.Text = "Result";
             this.tabPageResult.UseVisualStyleBackColor = true;
             // 
             // listViewResult
             // 
             this.listViewResult.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderTitle,
-            this.columnHeaderArtist,
-            this.columnHeaderAlbum});
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
             this.listViewResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewResult.FullRowSelect = true;
             this.listViewResult.Location = new System.Drawing.Point(3, 31);
             this.listViewResult.Name = "listViewResult";
             this.listViewResult.ShowGroups = false;
             this.listViewResult.Size = new System.Drawing.Size(519, 327);
-            this.listViewResult.SmallImageList = this.imgListCover;
+            this.listViewResult.SmallImageList = this.imgDownloadListCover;
             this.listViewResult.TabIndex = 0;
             this.listViewResult.UseCompatibleStateImageBehavior = false;
             this.listViewResult.View = System.Windows.Forms.View.Details;
             this.listViewResult.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listViewResult_KeyDown);
             this.listViewResult.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewResult_MouseDoubleClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Title";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Artist";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Album";
+            // 
+            // imgDownloadListCover
+            // 
+            this.imgDownloadListCover.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.imgDownloadListCover.ImageSize = new System.Drawing.Size(64, 64);
+            this.imgDownloadListCover.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // pnlResultControlls
+            // 
+            this.pnlResultControlls.Controls.Add(this.btnAddDownload);
+            this.pnlResultControlls.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlResultControlls.Location = new System.Drawing.Point(3, 3);
+            this.pnlResultControlls.Name = "pnlResultControlls";
+            this.pnlResultControlls.Size = new System.Drawing.Size(519, 28);
+            this.pnlResultControlls.TabIndex = 1;
+            // 
+            // btnAddDownload
+            // 
+            this.btnAddDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddDownload.Location = new System.Drawing.Point(350, 3);
+            this.btnAddDownload.Name = "btnAddDownload";
+            this.btnAddDownload.Size = new System.Drawing.Size(164, 23);
+            this.btnAddDownload.TabIndex = 0;
+            this.btnAddDownload.Text = "Add to download";
+            this.btnAddDownload.UseVisualStyleBackColor = true;
+            this.btnAddDownload.Click += new System.EventHandler(this.btnAddDownload_Click);
+            // 
+            // tabPageDownload
+            // 
+            this.tabPageDownload.Controls.Add(this.listViewDownload);
+            this.tabPageDownload.Controls.Add(this.pnlDownloadControls);
+            this.tabPageDownload.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDownload.Name = "tabPageDownload";
+            this.tabPageDownload.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageDownload.Size = new System.Drawing.Size(525, 361);
+            this.tabPageDownload.TabIndex = 1;
+            this.tabPageDownload.Text = "Download";
+            this.tabPageDownload.UseVisualStyleBackColor = true;
+            // 
+            // listViewDownload
+            // 
+            this.listViewDownload.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderTitle,
+            this.columnHeaderArtist,
+            this.columnHeaderAlbum});
+            this.listViewDownload.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewDownload.FullRowSelect = true;
+            this.listViewDownload.Location = new System.Drawing.Point(3, 31);
+            this.listViewDownload.Name = "listViewDownload";
+            this.listViewDownload.ShowGroups = false;
+            this.listViewDownload.Size = new System.Drawing.Size(519, 327);
+            this.listViewDownload.SmallImageList = this.imgDownloadListCover;
+            this.listViewDownload.TabIndex = 0;
+            this.listViewDownload.UseCompatibleStateImageBehavior = false;
+            this.listViewDownload.View = System.Windows.Forms.View.Details;
+            this.listViewDownload.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listViewDownload_KeyDown);
+            this.listViewDownload.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewDownload_MouseDoubleClick);
             // 
             // columnHeaderTitle
             // 
@@ -223,21 +304,16 @@
             // 
             this.columnHeaderAlbum.Text = "Album";
             // 
-            // imgListCover
+            // pnlDownloadControls
             // 
-            this.imgListCover.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-            this.imgListCover.ImageSize = new System.Drawing.Size(64, 64);
-            this.imgListCover.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // pnlResultControls
-            // 
-            this.pnlResultControls.Controls.Add(this.progressBarDownload);
-            this.pnlResultControls.Controls.Add(this.btnDownload);
-            this.pnlResultControls.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlResultControls.Location = new System.Drawing.Point(3, 3);
-            this.pnlResultControls.Name = "pnlResultControls";
-            this.pnlResultControls.Size = new System.Drawing.Size(519, 28);
-            this.pnlResultControls.TabIndex = 1;
+            this.pnlDownloadControls.Controls.Add(this.btnRemoveDownload);
+            this.pnlDownloadControls.Controls.Add(this.progressBarDownload);
+            this.pnlDownloadControls.Controls.Add(this.btnDownload);
+            this.pnlDownloadControls.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlDownloadControls.Location = new System.Drawing.Point(3, 3);
+            this.pnlDownloadControls.Name = "pnlDownloadControls";
+            this.pnlDownloadControls.Size = new System.Drawing.Size(519, 28);
+            this.pnlDownloadControls.TabIndex = 1;
             // 
             // progressBarDownload
             // 
@@ -246,7 +322,7 @@
             this.progressBarDownload.Enabled = false;
             this.progressBarDownload.Location = new System.Drawing.Point(5, 3);
             this.progressBarDownload.Name = "progressBarDownload";
-            this.progressBarDownload.Size = new System.Drawing.Size(428, 23);
+            this.progressBarDownload.Size = new System.Drawing.Size(313, 23);
             this.progressBarDownload.TabIndex = 1;
             // 
             // btnDownload
@@ -259,6 +335,23 @@
             this.btnDownload.Text = "Download";
             this.btnDownload.UseVisualStyleBackColor = true;
             this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
+            // 
+            // imgResultListCover
+            // 
+            this.imgResultListCover.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.imgResultListCover.ImageSize = new System.Drawing.Size(64, 64);
+            this.imgResultListCover.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // btnRemoveDownload
+            // 
+            this.btnRemoveDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemoveDownload.Location = new System.Drawing.Point(324, 3);
+            this.btnRemoveDownload.Name = "btnRemoveDownload";
+            this.btnRemoveDownload.Size = new System.Drawing.Size(109, 23);
+            this.btnRemoveDownload.TabIndex = 2;
+            this.btnRemoveDownload.Text = "Remove from list";
+            this.btnRemoveDownload.UseVisualStyleBackColor = true;
+            this.btnRemoveDownload.Click += new System.EventHandler(this.btnRemoveDownload_Click);
             // 
             // FrmMain
             // 
@@ -278,7 +371,9 @@
             this.tabPageSearch.ResumeLayout(false);
             this.tabPageSearch.PerformLayout();
             this.tabPageResult.ResumeLayout(false);
-            this.pnlResultControls.ResumeLayout(false);
+            this.pnlResultControlls.ResumeLayout(false);
+            this.tabPageDownload.ResumeLayout(false);
+            this.pnlDownloadControls.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,18 +391,27 @@
         private System.Windows.Forms.TextBox txtBoxTitle;
         private System.Windows.Forms.Label lblArtist;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.TabPage tabPageResult;
-        private System.Windows.Forms.ListView listViewResult;
+        private System.Windows.Forms.TabPage tabPageDownload;
+        private System.Windows.Forms.ListView listViewDownload;
         private System.Windows.Forms.ColumnHeader columnHeaderTitle;
         private System.Windows.Forms.ColumnHeader columnHeaderAlbum;
         private System.Windows.Forms.ColumnHeader columnHeaderArtist;
-        private System.Windows.Forms.ImageList imgListCover;
-        private System.Windows.Forms.Panel pnlResultControls;
+        private System.Windows.Forms.ImageList imgDownloadListCover;
+        private System.Windows.Forms.Panel pnlDownloadControls;
         private System.Windows.Forms.Button btnDownload;
-        private System.Windows.Forms.ProgressBar progressBarDownload;
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem artistTitleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem titleArtistToolStripMenuItem;
+        private System.Windows.Forms.ProgressBar progressBarDownload;
+        private System.Windows.Forms.TabPage tabPageResult;
+        private System.Windows.Forms.ListView listViewResult;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Panel pnlResultControlls;
+        private System.Windows.Forms.Button btnAddDownload;
+        private System.Windows.Forms.ImageList imgResultListCover;
+        private System.Windows.Forms.Button btnRemoveDownload;
     }
 }
 

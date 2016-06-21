@@ -86,12 +86,30 @@ namespace GMusicProxyGui
         private void ClearResultList()
         {
             listViewResult.Items.Clear();
-            imgListCover.Images.Clear();
+            imgResultListCover.Images.Clear();
+        }
+
+        private void ClearDownloadList()
+        {
+            listViewDownload.Items.Clear();
+            imgDownloadListCover.Images.Clear();
+        }
+
+        private void RemoveFromDownloadList(MusicEntry musicEntry)
+        {
+            if (musicEntry != null)
+            {
+                listViewDownload.Items.RemoveByKey(musicEntry.ProxyId);
+                imgDownloadListCover.Images.RemoveByKey(musicEntry.ProxyId);
+            }
         }
 
         private void AddResultListItem(MusicEntry musicEntry)
         {
+            if (listViewResult.Items.Find(musicEntry.ProxyId, false).Length != 0)
+                return;
             ListViewItem item = new ListViewItem(musicEntry.Title);
+            item.Name = musicEntry.ProxyId;
             item.Tag = musicEntry;
             item.SubItems.Add(new ListViewItem.ListViewSubItem(item, musicEntry.Artist) { Tag = columnHeaderArtist });
             item.SubItems.Add(new ListViewItem.ListViewSubItem(item, musicEntry.Album) { Tag = columnHeaderAlbum });
@@ -101,7 +119,28 @@ namespace GMusicProxyGui
                 Bitmap img = musicEntry.GetCoverFromFile();
                 if (img != null)
                 {
-                    imgListCover.Images.Add(musicEntry.ProxyId, img);
+                    imgResultListCover.Images.Add(musicEntry.ProxyId, img);
+                    item.ImageKey = musicEntry.ProxyId;
+                }
+            }
+        }
+
+        private void AddDownloadListItem(MusicEntry musicEntry)
+        {
+            if (listViewDownload.Items.Find(musicEntry.ProxyId, false).Length != 0)
+                return;
+            ListViewItem item = new ListViewItem(musicEntry.Title);
+            item.Name = musicEntry.ProxyId;
+            item.Tag = musicEntry;
+            item.SubItems.Add(new ListViewItem.ListViewSubItem(item, musicEntry.Artist) { Tag = columnHeaderArtist });
+            item.SubItems.Add(new ListViewItem.ListViewSubItem(item, musicEntry.Album) { Tag = columnHeaderAlbum });
+            listViewDownload.Items.Add(item);
+            if (musicEntry.IsFileExists())
+            {
+                Bitmap img = musicEntry.GetCoverFromFile();
+                if (img != null)
+                {
+                    imgDownloadListCover.Images.Add(musicEntry.ProxyId, img);
                     item.ImageKey = musicEntry.ProxyId;
                 }
             }
@@ -112,12 +151,12 @@ namespace GMusicProxyGui
         {
             if (!downloadAvaible)
                 return;
-            if (listViewResult.SelectedItems.Count == 0)
+            if (listViewDownload.SelectedItems.Count == 0)
                 return;
             if (MessageBox.Show(this, "Would you download the items?", "Download", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 List<ListViewItem> downloadItems = new List<ListViewItem>();
-                foreach (ListViewItem item in listViewResult.SelectedItems)
+                foreach (ListViewItem item in listViewDownload.SelectedItems)
                 {
                     MusicEntry musicEntry = (MusicEntry)item.Tag;
                     if (!musicEntry.IsFileExists())
@@ -137,7 +176,7 @@ namespace GMusicProxyGui
                         Bitmap img = musicEntry.GetCoverFromFile();
                         if (img != null)
                         {
-                            imgListCover.Images.Add(musicEntry.ProxyId, img);
+                            imgDownloadListCover.Images.Add(musicEntry.ProxyId, img);
                             item.ImageKey = musicEntry.ProxyId;
                         }
                     }
@@ -153,17 +192,51 @@ namespace GMusicProxyGui
             }
         }
 
+        private void AddDownloadListItemsFromResult()
+        {
+            if (!downloadAvaible)
+                return;
+            if (listViewResult.SelectedItems.Count == 0)
+                return;
+            if (MessageBox.Show(this, "Would you add the items to the download list?", "Download list", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                foreach (ListViewItem item in listViewResult.SelectedItems)
+                {
+                    MusicEntry musicEntry = (MusicEntry)item.Tag;
+                    AddDownloadListItem(musicEntry);
+                }
+                listViewDownload.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+        }
+
+        private void RemoveDownloadListItemsFromSelection()
+        {
+            if (!downloadAvaible)
+                return;
+            if (listViewDownload.SelectedItems.Count == 0)
+                return;
+            if (MessageBox.Show(this, "Would you remove the items from the download list?", "Download list", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                foreach (ListViewItem item in listViewDownload.SelectedItems)
+                {
+                    MusicEntry musicEntry = (MusicEntry)item.Tag;
+                    RemoveFromDownloadList(musicEntry);
+                }
+                listViewDownload.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            }
+        }
+
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new FrmSettings().ShowDialog(this);
         }
 
-        private void listViewResult_KeyDown(object sender, KeyEventArgs e)
+        private void listViewDownload_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.A && e.Control)
             {
-                listViewResult.MultiSelect = true;
-                foreach (ListViewItem item in listViewResult.Items)
+                listViewDownload.MultiSelect = true;
+                foreach (ListViewItem item in listViewDownload.Items)
                 {
                     item.Selected = true;
                 }
@@ -175,11 +248,11 @@ namespace GMusicProxyGui
             DownloadListItems();
         }
 
-        private void listViewResult_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void listViewDownload_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (listViewResult.SelectedItems.Count == 0)
+            if (listViewDownload.SelectedItems.Count == 0)
                 return;
-            ListViewHitTestInfo hit = listViewResult.HitTest(e.Location);
+            ListViewHitTestInfo hit = listViewDownload.HitTest(e.Location);
             if(hit != null && hit.Item != null && hit.SubItem != null)
             {
                 if (hit.SubItem.Tag == columnHeaderAlbum)
@@ -228,6 +301,44 @@ namespace GMusicProxyGui
                 SearchList(new ListImporter(dialog.FileName, ListImporter.ListType.TitleAndArtist));
                 Cursor.Current = Cursors.Default;
             }
+        }
+
+        private void listViewResult_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listViewResult.SelectedItems.Count == 0)
+                return;
+            ListViewHitTestInfo hit = listViewResult.HitTest(e.Location);
+            if (hit != null && hit.Item != null && hit.SubItem != null)
+            {
+                if (hit.SubItem.Tag == columnHeaderAlbum)
+                    SearchAlbum(hit.SubItem.Text, ((MusicEntry)hit.Item.Tag).Artist);
+                else if (hit.SubItem.Tag == columnHeaderArtist)
+                    SearchArtistTopTracks(((MusicEntry)hit.Item.Tag).Artist);
+                else
+                    AddDownloadListItemsFromResult();
+            }
+        }
+
+        private void listViewResult_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.A && e.Control)
+            {
+                listViewResult.MultiSelect = true;
+                foreach (ListViewItem item in listViewResult.Items)
+                {
+                    item.Selected = true;
+                }
+            }
+        }
+
+        private void btnAddDownload_Click(object sender, EventArgs e)
+        {
+            AddDownloadListItemsFromResult();
+        }
+
+        private void btnRemoveDownload_Click(object sender, EventArgs e)
+        {
+            RemoveDownloadListItemsFromSelection();
         }
     }
 }
