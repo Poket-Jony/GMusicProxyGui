@@ -42,6 +42,21 @@ namespace GMusicProxyGui
             return MusicEntry.GetMusicEntrysByM3U(response);
         }
 
+        public List<MusicEntry> GetMusicByMixSearch(string title, string artist, int count = 20)
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data.Add("type", "song");
+            if (!string.IsNullOrEmpty(title))
+                data.Add("title", title);
+            if (!string.IsNullOrEmpty(artist))
+                data.Add("artist", artist);
+            data.Add("exact", "no");
+            data.Add("num_tracks", count.ToString());
+            data.Add("transient", "yes");
+            string response = webController.RequestString("get_new_station_by_search", data);
+            return MusicEntry.GetMusicEntrysByM3U(response);
+        }
+
         public async Task DownloadSong(string url, string filePath)
         {
             try
@@ -77,6 +92,32 @@ namespace GMusicProxyGui
             Dictionary<string, string> data = new Dictionary<string, string>();
             data.Add("id", id);
             string response = webController.RequestString("get_album", data);
+            return MusicEntry.GetMusicEntrysByM3U(response);
+        }
+
+        public List<PlaylistEntry> GetMyPlaylists()
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data.Add("format", "text");
+            data.Add("separator", "|");
+            data.Add("only_url", "no");
+            string response = webController.RequestString("get_all_playlists", data);
+            return PlaylistEntry.GetPlaylistEntrysByText(response);
+        }
+
+        public List<PlaylistEntry> GetMyStations()
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data.Add("format", "text");
+            data.Add("separator", "|");
+            data.Add("only_url", "no");
+            string response = webController.RequestString("get_all_stations", data);
+            return PlaylistEntry.GetPlaylistEntrysByText(response);
+        }
+
+        public List<MusicEntry> GetMusicByPlaylist(PlaylistEntry playlistEntry)
+        {
+            string response = webController.RequestString(playlistEntry.ProxyPath);
             return MusicEntry.GetMusicEntrysByM3U(response);
         }
 

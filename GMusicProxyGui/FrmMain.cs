@@ -75,6 +75,78 @@ namespace GMusicProxyGui
             tabControlSR.SelectedTab = tabPageResult;
         }
 
+        private void GetMyPlaylists()
+        {
+            if (!downloadAvaible)
+                return;
+            ClearPlaylistList();
+            Cursor.Current = Cursors.WaitCursor;
+            List<PlaylistEntry> playlistEntrys = WebApi.Instance.GetMyPlaylists();
+            Cursor.Current = Cursors.Default;
+            if (playlistEntrys == null || playlistEntrys.Count == 0)
+                return;
+            foreach (PlaylistEntry playlistEntry in playlistEntrys)
+            {
+                AddPlaylistListItem(playlistEntry);
+            }
+            listViewPlaylist.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            tabControlSR.SelectedTab = tabPagePlaylist;
+        }
+
+        private void GetMyStations()
+        {
+            if (!downloadAvaible)
+                return;
+            ClearPlaylistList();
+            Cursor.Current = Cursors.WaitCursor;
+            List<PlaylistEntry> playlistEntrys = WebApi.Instance.GetMyStations();
+            Cursor.Current = Cursors.Default;
+            if (playlistEntrys == null || playlistEntrys.Count == 0)
+                return;
+            foreach (PlaylistEntry playlistEntry in playlistEntrys)
+            {
+                AddPlaylistListItem(playlistEntry);
+            }
+            listViewPlaylist.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            tabControlSR.SelectedTab = tabPagePlaylist;
+        }
+
+        private void OpenPlaylist(PlaylistEntry playlistEntry)
+        {
+            if (!downloadAvaible)
+                return;
+            ClearResultList();
+            Cursor.Current = Cursors.WaitCursor;
+            List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicByPlaylist(playlistEntry);
+            Cursor.Current = Cursors.Default;
+            if (musicEntrys == null || musicEntrys.Count == 0)
+                return;
+            foreach (MusicEntry musicEntry in musicEntrys)
+            {
+                AddResultListItem(musicEntry);
+            }
+            listViewResult.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            tabControlSR.SelectedTab = tabPageResult;
+        }
+
+        private void SearchMix(string title, string artist)
+        {
+            if (!downloadAvaible)
+                return;
+            ClearResultList();
+            Cursor.Current = Cursors.WaitCursor;
+            List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicByMixSearch(title, artist, Properties.Settings.Default.resultCount);
+            Cursor.Current = Cursors.Default;
+            if (musicEntrys == null || musicEntrys.Count == 0)
+                return;
+            foreach (MusicEntry musicEntry in musicEntrys)
+            {
+                AddResultListItem(musicEntry);
+            }
+            listViewResult.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            tabControlSR.SelectedTab = tabPageResult;
+        }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtBoxTitle.Text) || !string.IsNullOrEmpty(txtBoxArtist.Text))
@@ -93,6 +165,11 @@ namespace GMusicProxyGui
         {
             listViewDownload.Items.Clear();
             imgDownloadListCover.Images.Clear();
+        }
+
+        private void ClearPlaylistList()
+        {
+            listViewPlaylist.Items.Clear();
         }
 
         private void RemoveFromDownloadList(MusicEntry musicEntry)
@@ -123,6 +200,15 @@ namespace GMusicProxyGui
                     item.ImageKey = musicEntry.ProxyId;
                 }
             }
+        }
+        private void AddPlaylistListItem(PlaylistEntry playlistEntry)
+        {
+            if (listViewPlaylist.Items.Find(playlistEntry.ProxyId, false).Length != 0)
+                return;
+            ListViewItem item = new ListViewItem(playlistEntry.Title);
+            item.Name = playlistEntry.ProxyId;
+            item.Tag = playlistEntry;
+            listViewPlaylist.Items.Add(item);
         }
 
         private void AddDownloadListItem(MusicEntry musicEntry)
@@ -227,6 +313,18 @@ namespace GMusicProxyGui
                 }
                 listViewDownload.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
+        }
+
+        private void OpenPlaylistFromSelection()
+        {
+            if (!downloadAvaible)
+                return;
+            if (listViewPlaylist.SelectedItems.Count == 0)
+                return;
+
+            PlaylistEntry playlistEntry = (PlaylistEntry)listViewPlaylist.SelectedItems[0].Tag;
+            OpenPlaylist(playlistEntry);
+            listViewPlaylist.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -342,6 +440,40 @@ namespace GMusicProxyGui
         private void btnRemoveDownload_Click(object sender, EventArgs e)
         {
             RemoveDownloadListItemsFromSelection();
+        }
+
+        private void btnGetMyPlaylists_Click(object sender, EventArgs e)
+        {
+            GetMyPlaylists();
+        }
+
+        private void listViewPlaylist_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listViewPlaylist.SelectedItems.Count == 0)
+                return;
+            ListViewHitTestInfo hit = listViewPlaylist.HitTest(e.Location);
+            if (hit != null && hit.Item != null && hit.SubItem != null)
+            {
+                OpenPlaylistFromSelection();
+            }
+        }
+
+        private void btnOpenPlaylist_Click(object sender, EventArgs e)
+        {
+            OpenPlaylistFromSelection();
+        }
+
+        private void btnMixSearch_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtBoxTitle.Text) || !string.IsNullOrEmpty(txtBoxArtist.Text))
+                SearchMix(txtBoxTitle.Text, txtBoxArtist.Text);
+            else
+                MessageBox.Show(this, "Invalid input!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private void btnGetMyStations_Click(object sender, EventArgs e)
+        {
+            GetMyStations();
         }
     }
 }

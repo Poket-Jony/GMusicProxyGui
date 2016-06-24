@@ -37,6 +37,8 @@
             this.titleArtistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlSR = new System.Windows.Forms.TabControl();
             this.tabPageSearch = new System.Windows.Forms.TabPage();
+            this.btnMixSearch = new System.Windows.Forms.Button();
+            this.btnGetMyPlaylists = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtBoxArtist = new System.Windows.Forms.TextBox();
             this.txtBoxTitle = new System.Windows.Forms.TextBox();
@@ -47,7 +49,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.imgDownloadListCover = new System.Windows.Forms.ImageList(this.components);
+            this.imgResultListCover = new System.Windows.Forms.ImageList(this.components);
             this.pnlResultControlls = new System.Windows.Forms.Panel();
             this.btnAddDownload = new System.Windows.Forms.Button();
             this.tabPageDownload = new System.Windows.Forms.TabPage();
@@ -55,11 +57,17 @@
             this.columnHeaderTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderArtist = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderAlbum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.imgDownloadListCover = new System.Windows.Forms.ImageList(this.components);
             this.pnlDownloadControls = new System.Windows.Forms.Panel();
             this.btnRemoveDownload = new System.Windows.Forms.Button();
             this.progressBarDownload = new System.Windows.Forms.ProgressBar();
             this.btnDownload = new System.Windows.Forms.Button();
-            this.imgResultListCover = new System.Windows.Forms.ImageList(this.components);
+            this.tabPagePlaylist = new System.Windows.Forms.TabPage();
+            this.listViewPlaylist = new System.Windows.Forms.ListView();
+            this.columnHeaderPlaylistTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pnlPlaylistControls = new System.Windows.Forms.Panel();
+            this.btnOpenPlaylist = new System.Windows.Forms.Button();
+            this.btnGetMyStations = new System.Windows.Forms.Button();
             this.menu.SuspendLayout();
             this.tabControlSR.SuspendLayout();
             this.tabPageSearch.SuspendLayout();
@@ -67,6 +75,8 @@
             this.pnlResultControlls.SuspendLayout();
             this.tabPageDownload.SuspendLayout();
             this.pnlDownloadControls.SuspendLayout();
+            this.tabPagePlaylist.SuspendLayout();
+            this.pnlPlaylistControls.SuspendLayout();
             this.SuspendLayout();
             // 
             // menu
@@ -75,7 +85,7 @@
             this.menuToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(533, 24);
+            this.menu.Size = new System.Drawing.Size(647, 24);
             this.menu.TabIndex = 0;
             this.menu.Text = "menuStrip1";
             // 
@@ -123,15 +133,19 @@
             this.tabControlSR.Controls.Add(this.tabPageSearch);
             this.tabControlSR.Controls.Add(this.tabPageResult);
             this.tabControlSR.Controls.Add(this.tabPageDownload);
+            this.tabControlSR.Controls.Add(this.tabPagePlaylist);
             this.tabControlSR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlSR.Location = new System.Drawing.Point(0, 24);
             this.tabControlSR.Name = "tabControlSR";
             this.tabControlSR.SelectedIndex = 0;
-            this.tabControlSR.Size = new System.Drawing.Size(533, 387);
+            this.tabControlSR.Size = new System.Drawing.Size(647, 464);
             this.tabControlSR.TabIndex = 2;
             // 
             // tabPageSearch
             // 
+            this.tabPageSearch.Controls.Add(this.btnGetMyStations);
+            this.tabPageSearch.Controls.Add(this.btnMixSearch);
+            this.tabPageSearch.Controls.Add(this.btnGetMyPlaylists);
             this.tabPageSearch.Controls.Add(this.btnSearch);
             this.tabPageSearch.Controls.Add(this.txtBoxArtist);
             this.tabPageSearch.Controls.Add(this.txtBoxTitle);
@@ -140,15 +154,36 @@
             this.tabPageSearch.Location = new System.Drawing.Point(4, 22);
             this.tabPageSearch.Name = "tabPageSearch";
             this.tabPageSearch.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSearch.Size = new System.Drawing.Size(525, 361);
+            this.tabPageSearch.Size = new System.Drawing.Size(639, 438);
             this.tabPageSearch.TabIndex = 0;
             this.tabPageSearch.Text = "Search";
             this.tabPageSearch.UseVisualStyleBackColor = true;
             // 
+            // btnMixSearch
+            // 
+            this.btnMixSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMixSearch.Location = new System.Drawing.Point(464, 94);
+            this.btnMixSearch.Name = "btnMixSearch";
+            this.btnMixSearch.Size = new System.Drawing.Size(86, 23);
+            this.btnMixSearch.TabIndex = 13;
+            this.btnMixSearch.Text = "Mix search";
+            this.btnMixSearch.UseVisualStyleBackColor = true;
+            this.btnMixSearch.Click += new System.EventHandler(this.btnMixSearch_Click);
+            // 
+            // btnGetMyPlaylists
+            // 
+            this.btnGetMyPlaylists.Location = new System.Drawing.Point(119, 94);
+            this.btnGetMyPlaylists.Name = "btnGetMyPlaylists";
+            this.btnGetMyPlaylists.Size = new System.Drawing.Size(110, 23);
+            this.btnGetMyPlaylists.TabIndex = 12;
+            this.btnGetMyPlaylists.Text = "Get my playlists";
+            this.btnGetMyPlaylists.UseVisualStyleBackColor = true;
+            this.btnGetMyPlaylists.Click += new System.EventHandler(this.btnGetMyPlaylists_Click);
+            // 
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(442, 94);
+            this.btnSearch.Location = new System.Drawing.Point(556, 94);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 11;
@@ -162,7 +197,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBoxArtist.Location = new System.Drawing.Point(119, 54);
             this.txtBoxArtist.Name = "txtBoxArtist";
-            this.txtBoxArtist.Size = new System.Drawing.Size(398, 20);
+            this.txtBoxArtist.Size = new System.Drawing.Size(512, 20);
             this.txtBoxArtist.TabIndex = 10;
             // 
             // txtBoxTitle
@@ -171,7 +206,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBoxTitle.Location = new System.Drawing.Point(119, 13);
             this.txtBoxTitle.Name = "txtBoxTitle";
-            this.txtBoxTitle.Size = new System.Drawing.Size(398, 20);
+            this.txtBoxTitle.Size = new System.Drawing.Size(512, 20);
             this.txtBoxTitle.TabIndex = 9;
             // 
             // lblArtist
@@ -235,11 +270,11 @@
             // 
             this.columnHeader3.Text = "Album";
             // 
-            // imgDownloadListCover
+            // imgResultListCover
             // 
-            this.imgDownloadListCover.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-            this.imgDownloadListCover.ImageSize = new System.Drawing.Size(64, 64);
-            this.imgDownloadListCover.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgResultListCover.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.imgResultListCover.ImageSize = new System.Drawing.Size(64, 64);
+            this.imgResultListCover.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // pnlResultControlls
             // 
@@ -304,6 +339,12 @@
             // 
             this.columnHeaderAlbum.Text = "Album";
             // 
+            // imgDownloadListCover
+            // 
+            this.imgDownloadListCover.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.imgDownloadListCover.ImageSize = new System.Drawing.Size(64, 64);
+            this.imgDownloadListCover.TransparentColor = System.Drawing.Color.Transparent;
+            // 
             // pnlDownloadControls
             // 
             this.pnlDownloadControls.Controls.Add(this.btnRemoveDownload);
@@ -347,18 +388,74 @@
             this.btnDownload.UseVisualStyleBackColor = true;
             this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
             // 
-            // imgResultListCover
+            // tabPagePlaylist
             // 
-            this.imgResultListCover.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-            this.imgResultListCover.ImageSize = new System.Drawing.Size(64, 64);
-            this.imgResultListCover.TransparentColor = System.Drawing.Color.Transparent;
+            this.tabPagePlaylist.Controls.Add(this.listViewPlaylist);
+            this.tabPagePlaylist.Controls.Add(this.pnlPlaylistControls);
+            this.tabPagePlaylist.Location = new System.Drawing.Point(4, 22);
+            this.tabPagePlaylist.Name = "tabPagePlaylist";
+            this.tabPagePlaylist.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPagePlaylist.Size = new System.Drawing.Size(525, 361);
+            this.tabPagePlaylist.TabIndex = 3;
+            this.tabPagePlaylist.Text = "Playlist";
+            this.tabPagePlaylist.UseVisualStyleBackColor = true;
+            // 
+            // listViewPlaylist
+            // 
+            this.listViewPlaylist.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderPlaylistTitle});
+            this.listViewPlaylist.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewPlaylist.FullRowSelect = true;
+            this.listViewPlaylist.Location = new System.Drawing.Point(3, 31);
+            this.listViewPlaylist.MultiSelect = false;
+            this.listViewPlaylist.Name = "listViewPlaylist";
+            this.listViewPlaylist.ShowGroups = false;
+            this.listViewPlaylist.Size = new System.Drawing.Size(519, 327);
+            this.listViewPlaylist.TabIndex = 0;
+            this.listViewPlaylist.UseCompatibleStateImageBehavior = false;
+            this.listViewPlaylist.View = System.Windows.Forms.View.Details;
+            this.listViewPlaylist.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewPlaylist_MouseDoubleClick);
+            // 
+            // columnHeaderPlaylistTitle
+            // 
+            this.columnHeaderPlaylistTitle.Text = "Title";
+            // 
+            // pnlPlaylistControls
+            // 
+            this.pnlPlaylistControls.Controls.Add(this.btnOpenPlaylist);
+            this.pnlPlaylistControls.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlPlaylistControls.Location = new System.Drawing.Point(3, 3);
+            this.pnlPlaylistControls.Name = "pnlPlaylistControls";
+            this.pnlPlaylistControls.Size = new System.Drawing.Size(519, 28);
+            this.pnlPlaylistControls.TabIndex = 1;
+            // 
+            // btnOpenPlaylist
+            // 
+            this.btnOpenPlaylist.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenPlaylist.Location = new System.Drawing.Point(435, 3);
+            this.btnOpenPlaylist.Name = "btnOpenPlaylist";
+            this.btnOpenPlaylist.Size = new System.Drawing.Size(79, 23);
+            this.btnOpenPlaylist.TabIndex = 0;
+            this.btnOpenPlaylist.Text = "Open";
+            this.btnOpenPlaylist.UseVisualStyleBackColor = true;
+            this.btnOpenPlaylist.Click += new System.EventHandler(this.btnOpenPlaylist_Click);
+            // 
+            // btnGetMyStations
+            // 
+            this.btnGetMyStations.Location = new System.Drawing.Point(235, 94);
+            this.btnGetMyStations.Name = "btnGetMyStations";
+            this.btnGetMyStations.Size = new System.Drawing.Size(109, 23);
+            this.btnGetMyStations.TabIndex = 14;
+            this.btnGetMyStations.Text = "Get my stations";
+            this.btnGetMyStations.UseVisualStyleBackColor = true;
+            this.btnGetMyStations.Click += new System.EventHandler(this.btnGetMyStations_Click);
             // 
             // FrmMain
             // 
             this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 411);
+            this.ClientSize = new System.Drawing.Size(647, 488);
             this.Controls.Add(this.tabControlSR);
             this.Controls.Add(this.menu);
             this.MainMenuStrip = this.menu;
@@ -374,6 +471,8 @@
             this.pnlResultControlls.ResumeLayout(false);
             this.tabPageDownload.ResumeLayout(false);
             this.pnlDownloadControls.ResumeLayout(false);
+            this.tabPagePlaylist.ResumeLayout(false);
+            this.pnlPlaylistControls.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -412,6 +511,14 @@
         private System.Windows.Forms.Button btnAddDownload;
         private System.Windows.Forms.ImageList imgResultListCover;
         private System.Windows.Forms.Button btnRemoveDownload;
+        private System.Windows.Forms.Button btnGetMyPlaylists;
+        private System.Windows.Forms.TabPage tabPagePlaylist;
+        private System.Windows.Forms.ListView listViewPlaylist;
+        private System.Windows.Forms.ColumnHeader columnHeaderPlaylistTitle;
+        private System.Windows.Forms.Panel pnlPlaylistControls;
+        private System.Windows.Forms.Button btnOpenPlaylist;
+        private System.Windows.Forms.Button btnMixSearch;
+        private System.Windows.Forms.Button btnGetMyStations;
     }
 }
 

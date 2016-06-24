@@ -19,13 +19,17 @@ namespace GMusicProxyGui
             this.url = url;
         }
 
-        public string RequestString(string request, Dictionary<string, string> parameters)
+        public string RequestString(string request, Dictionary<string, string> parameters = null)
         {
             try
             {
                 WebClient client = new WebClient();
                 client.Encoding = Encoding.UTF8;
-                string req = Uri.EscapeUriString(url + request + BuildGetUrl(parameters));
+                string req;
+                if (parameters == null)
+                    req = Uri.EscapeUriString(request);
+                else
+                    req = Uri.EscapeUriString(url + request + BuildGetUrl(parameters));
                 Console.WriteLine(req);
                 return client.DownloadString(req);
             }
