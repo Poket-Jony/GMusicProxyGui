@@ -37,7 +37,7 @@ namespace GMusicProxyGui
             {
                 case ListType.ArtistAndTitle:
                     {
-                        Regex regexLine = new Regex(@"(.*) - (.*)");
+                        Regex regexLine = new Regex(@"(.*) (?:-|–) (.*)");
                         foreach (string line in importList)
                         {
                             if (!string.IsNullOrEmpty(line) && regexLine.IsMatch(line))
@@ -54,7 +54,7 @@ namespace GMusicProxyGui
                     }
                 case ListType.TitleAndArtist:
                     {
-                        Regex regexLine = new Regex(@"(.*) - (.*)");
+                        Regex regexLine = new Regex(@"(.*) (?:-|–) (.*)");
                         foreach (string line in importList)
                         {
                             if (!string.IsNullOrEmpty(line) && regexLine.IsMatch(line))
@@ -80,13 +80,13 @@ namespace GMusicProxyGui
                 {
                     case ListType.TitleAndArtist:
                     case ListType.ArtistAndTitle:
-                        {
-                            List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicBySearch(entry.Title, entry.Artist, 1);
-                            if (musicEntrys == null || musicEntrys.Count == 0)
-                                continue;
-                            musicList.Add(musicEntrys.First());
-                            break;
-                        }
+                    {
+                        List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicBySearch(entry.Title, entry.Artist, 1);
+                        if (musicEntrys == null || musicEntrys.Count == 0)
+                            continue;
+                        musicList.Add(musicEntrys.First());
+                        break;
+                    }
                 }
             }
             return musicList;

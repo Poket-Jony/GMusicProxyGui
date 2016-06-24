@@ -56,10 +56,10 @@
             this.columnHeaderArtist = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderAlbum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlDownloadControls = new System.Windows.Forms.Panel();
+            this.btnRemoveDownload = new System.Windows.Forms.Button();
             this.progressBarDownload = new System.Windows.Forms.ProgressBar();
             this.btnDownload = new System.Windows.Forms.Button();
             this.imgResultListCover = new System.Windows.Forms.ImageList(this.components);
-            this.btnRemoveDownload = new System.Windows.Forms.Button();
             this.menu.SuspendLayout();
             this.tabControlSR.SuspendLayout();
             this.tabPageSearch.SuspendLayout();
@@ -216,7 +216,7 @@
             this.listViewResult.Name = "listViewResult";
             this.listViewResult.ShowGroups = false;
             this.listViewResult.Size = new System.Drawing.Size(519, 327);
-            this.listViewResult.SmallImageList = this.imgDownloadListCover;
+            this.listViewResult.SmallImageList = this.imgResultListCover;
             this.listViewResult.TabIndex = 0;
             this.listViewResult.UseCompatibleStateImageBehavior = false;
             this.listViewResult.View = System.Windows.Forms.View.Details;
@@ -315,6 +315,17 @@
             this.pnlDownloadControls.Size = new System.Drawing.Size(519, 28);
             this.pnlDownloadControls.TabIndex = 1;
             // 
+            // btnRemoveDownload
+            // 
+            this.btnRemoveDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemoveDownload.Location = new System.Drawing.Point(324, 3);
+            this.btnRemoveDownload.Name = "btnRemoveDownload";
+            this.btnRemoveDownload.Size = new System.Drawing.Size(109, 23);
+            this.btnRemoveDownload.TabIndex = 2;
+            this.btnRemoveDownload.Text = "Remove from list";
+            this.btnRemoveDownload.UseVisualStyleBackColor = true;
+            this.btnRemoveDownload.Click += new System.EventHandler(this.btnRemoveDownload_Click);
+            // 
             // progressBarDownload
             // 
             this.progressBarDownload.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -341,17 +352,6 @@
             this.imgResultListCover.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
             this.imgResultListCover.ImageSize = new System.Drawing.Size(64, 64);
             this.imgResultListCover.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // btnRemoveDownload
-            // 
-            this.btnRemoveDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemoveDownload.Location = new System.Drawing.Point(324, 3);
-            this.btnRemoveDownload.Name = "btnRemoveDownload";
-            this.btnRemoveDownload.Size = new System.Drawing.Size(109, 23);
-            this.btnRemoveDownload.TabIndex = 2;
-            this.btnRemoveDownload.Text = "Remove from list";
-            this.btnRemoveDownload.UseVisualStyleBackColor = true;
-            this.btnRemoveDownload.Click += new System.EventHandler(this.btnRemoveDownload_Click);
             // 
             // FrmMain
             // 

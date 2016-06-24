@@ -170,6 +170,7 @@ namespace GMusicProxyGui
                     progressBarDownload.Value++;
                     MusicEntry musicEntry = (MusicEntry)item.Tag;
                     musicEntry.UpdateFilePath();
+                    start_download:
                     try
                     {
                         await WebApi.Instance.DownloadSong(musicEntry.ProxyPath, musicEntry.FilePath);
@@ -182,8 +183,10 @@ namespace GMusicProxyGui
                     }
                     catch (Exception e)
                     {
-                        MessageBox.Show(this, "Error at item " + progressBarDownload.Value + ":\n" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        break;
+                        if (MessageBox.Show(this, "Error at item " + progressBarDownload.Value + ":\n" + e.ToString(), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Exclamation) == DialogResult.Retry)
+                            goto start_download;
+                        else
+                            break;
                     }
                 }
                 progressBarDownload.Value = 0;
