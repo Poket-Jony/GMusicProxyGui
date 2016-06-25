@@ -19,6 +19,7 @@ namespace GMusicProxyGui
             new FrmSettings().CheckFirstStartup();
         }
 
+        #region Search
         private void SearchSong(string title, string artist)
         {
             if (!downloadAvaible)
@@ -154,7 +155,9 @@ namespace GMusicProxyGui
             else
                 MessageBox.Show(this, "Invalid input!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
+        #endregion
 
+        #region List
         private void ClearResultList()
         {
             listViewResult.Items.Clear();
@@ -269,6 +272,11 @@ namespace GMusicProxyGui
                     }
                     catch (Exception e)
                     {
+                        try
+                        {
+                            File.Delete(musicEntry.FilePath);
+                        }
+                        catch { }
                         if (MessageBox.Show(this, "Error at item " + progressBarDownload.Value + ":\n" + e.ToString(), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Exclamation) == DialogResult.Retry)
                             goto start_download;
                         else
@@ -378,32 +386,6 @@ namespace GMusicProxyGui
             tabControlSR.SelectedTab = tabPageResult;
         }
 
-        private void artistTitleToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(this, "Syntax:\nArtist1 - Title1\nArtist2 - Title2\n...", "Syntax help", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Title = "Select a list file to import:";
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                Cursor.Current = Cursors.WaitCursor;
-                SearchList(new ListImporter(dialog.FileName, ListImporter.ListType.ArtistAndTitle));
-                Cursor.Current = Cursors.Default;
-            }
-        }
-
-        private void titleArtistToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(this, "Syntax:\nTitle1 - Artist1\nTitle2 - Artist2\n...", "Syntax help", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Title = "Select a list file to import:";
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                Cursor.Current = Cursors.WaitCursor;
-                SearchList(new ListImporter(dialog.FileName, ListImporter.ListType.TitleAndArtist));
-                Cursor.Current = Cursors.Default;
-            }
-        }
-
         private void listViewResult_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (listViewResult.SelectedItems.Count == 0)
@@ -475,5 +457,34 @@ namespace GMusicProxyGui
         {
             GetMyStations();
         }
+        #endregion
+
+        #region Menu
+        private void artistTitleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(this, "Syntax:\nArtist1 - Title1\nArtist2 - Title2\n...", "Syntax help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Select a list file to import:";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                SearchList(new ListImporter(dialog.FileName, ListImporter.ListType.ArtistAndTitle));
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        private void titleArtistToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(this, "Syntax:\nTitle1 - Artist1\nTitle2 - Artist2\n...", "Syntax help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Select a list file to import:";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                SearchList(new ListImporter(dialog.FileName, ListImporter.ListType.TitleAndArtist));
+                Cursor.Current = Cursors.Default;
+            }
+        }
+        #endregion
     }
 }
