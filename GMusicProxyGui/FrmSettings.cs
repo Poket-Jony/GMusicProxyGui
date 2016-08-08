@@ -69,6 +69,7 @@ namespace GMusicProxyGui
                 return;
             }
             SaveSettings();
+            WebApi.GetNewInstance();
             this.Close();
         }
 

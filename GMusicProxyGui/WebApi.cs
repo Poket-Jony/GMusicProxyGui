@@ -23,9 +23,14 @@ namespace GMusicProxyGui
             }
         }
 
-        public WebApi()
+        private WebApi()
         {
             webController = new WebController(Properties.Settings.Default.proxyUrl);
+        }
+
+        public static WebApi GetNewInstance()
+        {
+            return instance = new WebApi();
         }
 
         public List<MusicEntry> GetMusicBySearch(string title, string artist, int count = 20)
