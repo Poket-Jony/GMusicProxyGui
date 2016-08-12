@@ -485,6 +485,12 @@ namespace GMusicProxyGui
                 Cursor.Current = Cursors.Default;
             }
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string msg = string.Format("Version: {0}\n\nAuthor: Jonas Plamann\nGitHub: https://github.com/Poket-Jony/GMusicProxyGui\n\nThis software only communicates with the GMusicProxy and not directly with any Google-API.", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            MessageBox.Show(this, msg, "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         #endregion
     }
 }
