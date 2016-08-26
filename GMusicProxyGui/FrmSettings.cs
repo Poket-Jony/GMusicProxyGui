@@ -11,7 +11,7 @@ using System.IO;
 
 namespace GMusicProxyGui
 {
-    public partial class FrmSettings : Form
+    public partial class FrmSettings : MetroFramework.Forms.MetroForm
     {
         public FrmSettings()
         {

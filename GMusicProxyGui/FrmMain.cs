@@ -11,7 +11,7 @@ using System.IO;
 
 namespace GMusicProxyGui
 {
-    public partial class FrmMain : Form
+    public partial class FrmMain : MetroFramework.Forms.MetroForm
     {
         public FrmMain()
         {
@@ -153,7 +153,7 @@ namespace GMusicProxyGui
             if (!string.IsNullOrEmpty(txtBoxTitle.Text) || !string.IsNullOrEmpty(txtBoxArtist.Text))
                 SearchSong(txtBoxTitle.Text, txtBoxArtist.Text);
             else
-                MessageBox.Show(this, "Invalid input!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MetroFramework.MetroMessageBox.Show(this, "Invalid input!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
         #endregion
 
@@ -242,7 +242,7 @@ namespace GMusicProxyGui
                 return;
             if (listViewDownload.SelectedItems.Count == 0)
                 return;
-            if (MessageBox.Show(this, "Would you download the items?", "Download", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            if (MetroFramework.MetroMessageBox.Show(this, "Would you download the items?", "Download", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 List<ListViewItem> downloadItems = new List<ListViewItem>();
                 foreach (ListViewItem item in listViewDownload.SelectedItems)
@@ -277,7 +277,7 @@ namespace GMusicProxyGui
                             File.Delete(musicEntry.FilePath);
                         }
                         catch { }
-                        if (MessageBox.Show(this, "Error at item " + progressBarDownload.Value + ":\n" + e.ToString(), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Exclamation) == DialogResult.Retry)
+                        if (MetroFramework.MetroMessageBox.Show(this, "Error at item " + progressBarDownload.Value + ":\n" + e.ToString(), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Exclamation) == DialogResult.Retry)
                             goto start_download;
                         else
                             break;
@@ -295,7 +295,7 @@ namespace GMusicProxyGui
                 return;
             if (listViewResult.SelectedItems.Count == 0)
                 return;
-            if (MessageBox.Show(this, "Would you add the items to the download list?", "Download list", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            if (MetroFramework.MetroMessageBox.Show(this, "Would you add the items to the download list?", "Download list", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 foreach (ListViewItem item in listViewResult.SelectedItems)
                 {
@@ -312,7 +312,7 @@ namespace GMusicProxyGui
                 return;
             if (listViewDownload.SelectedItems.Count == 0)
                 return;
-            if (MessageBox.Show(this, "Would you remove the items from the download list?", "Download list", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            if (MetroFramework.MetroMessageBox.Show(this, "Would you remove the items from the download list?", "Download list", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 foreach (ListViewItem item in listViewDownload.SelectedItems)
                 {
@@ -450,7 +450,7 @@ namespace GMusicProxyGui
             if (!string.IsNullOrEmpty(txtBoxTitle.Text) || !string.IsNullOrEmpty(txtBoxArtist.Text))
                 SearchMix(txtBoxTitle.Text, txtBoxArtist.Text);
             else
-                MessageBox.Show(this, "Invalid input!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MetroFramework.MetroMessageBox.Show(this, "Invalid input!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void btnGetMyStations_Click(object sender, EventArgs e)
@@ -462,7 +462,7 @@ namespace GMusicProxyGui
         #region Menu
         private void artistTitleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(this, "Syntax:\nArtist1 - Title1\nArtist2 - Title2\n...", "Syntax help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MetroFramework.MetroMessageBox.Show(this, "Syntax:\nArtist1 - Title1\nArtist2 - Title2\n...", "Syntax help", MessageBoxButtons.OK, MessageBoxIcon.Information);
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "Select a list file to import:";
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -475,7 +475,7 @@ namespace GMusicProxyGui
 
         private void titleArtistToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(this, "Syntax:\nTitle1 - Artist1\nTitle2 - Artist2\n...", "Syntax help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MetroFramework.MetroMessageBox.Show(this, "Syntax:\nTitle1 - Artist1\nTitle2 - Artist2\n...", "Syntax help", MessageBoxButtons.OK, MessageBoxIcon.Information);
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "Select a list file to import:";
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -488,8 +488,8 @@ namespace GMusicProxyGui
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string msg = string.Format("Version: {0}\n\nAuthor: Jonas Plamann\nGitHub: https://github.com/Poket-Jony/GMusicProxyGui\n\nThis software only communicates with the GMusicProxy and not directly with any Google-API.", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
-            MessageBox.Show(this, msg, "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string msg = string.Format("Version: {0}\nAuthor: Jonas Plamann\nGitHub: https://github.com/Poket-Jony/GMusicProxyGui\nThis software only communicates with the GMusicProxy and not directly with any Google-API.", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            MetroFramework.MetroMessageBox.Show(this, msg, "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
     }
