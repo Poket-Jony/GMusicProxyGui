@@ -11,3 +11,6 @@ The application uses at no time any Google API, and only works in connection wit
 Please note the attached license to use this software.
 
 GMusicProxy: https://github.com/diraimondo/gmusicproxy
+
+##Screenshot
+![GMusicProxyGui](https://github.com/Poket-Jony/GMusicProxyGui/raw/master/gmusicproxygui_screenshot.jpg)
