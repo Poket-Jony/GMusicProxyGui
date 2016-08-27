@@ -242,7 +242,7 @@ namespace GMusicProxyGui
                 return;
             if (listViewDownload.SelectedItems.Count == 0)
                 return;
-            if (MetroFramework.MetroMessageBox.Show(this, "Would you download the items?", "Download", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            if (MetroFramework.MetroMessageBox.Show(this, "Would you download the items?", "Download", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
                 List<ListViewItem> downloadItems = new List<ListViewItem>();
                 foreach (ListViewItem item in listViewDownload.SelectedItems)
@@ -295,7 +295,7 @@ namespace GMusicProxyGui
                 return;
             if (listViewResult.SelectedItems.Count == 0)
                 return;
-            if (MetroFramework.MetroMessageBox.Show(this, "Would you add the items to the download list?", "Download list", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            if (MetroFramework.MetroMessageBox.Show(this, "Would you add the items to the download list?", "Download list", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
                 foreach (ListViewItem item in listViewResult.SelectedItems)
                 {
@@ -312,7 +312,7 @@ namespace GMusicProxyGui
                 return;
             if (listViewDownload.SelectedItems.Count == 0)
                 return;
-            if (MetroFramework.MetroMessageBox.Show(this, "Would you remove the items from the download list?", "Download list", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            if (MetroFramework.MetroMessageBox.Show(this, "Would you remove the items from the download list?", "Download list", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
                 foreach (ListViewItem item in listViewDownload.SelectedItems)
                 {
@@ -462,7 +462,7 @@ namespace GMusicProxyGui
         #region Menu
         private void artistTitleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MetroFramework.MetroMessageBox.Show(this, "Syntax:\nArtist1 - Title1\nArtist2 - Title2\n...", "Syntax help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MetroFramework.MetroMessageBox.Show(this, "Syntax:\nArtist1 - Title1\nArtist2 - Title2\n...", "Syntax help", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "Select a list file to import:";
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -475,7 +475,7 @@ namespace GMusicProxyGui
 
         private void titleArtistToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MetroFramework.MetroMessageBox.Show(this, "Syntax:\nTitle1 - Artist1\nTitle2 - Artist2\n...", "Syntax help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MetroFramework.MetroMessageBox.Show(this, "Syntax:\nTitle1 - Artist1\nTitle2 - Artist2\n...", "Syntax help", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "Select a list file to import:";
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -489,7 +489,7 @@ namespace GMusicProxyGui
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string msg = string.Format("Version: {0}\nAuthor: Jonas Plamann\nGitHub: https://github.com/Poket-Jony/GMusicProxyGui\nThis software only communicates with the GMusicProxy and not directly with any Google-API.", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
-            MetroFramework.MetroMessageBox.Show(this, msg, "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MetroFramework.MetroMessageBox.Show(this, msg, "About", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
         #endregion
     }
