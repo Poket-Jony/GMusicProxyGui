@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.menu = new System.Windows.Forms.MenuStrip();
-            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.artistTitleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,21 +87,13 @@
             this.menu.BackColor = System.Drawing.Color.Transparent;
             this.menu.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuToolStripMenuItem,
+            this.settingsToolStripMenuItem,
+            this.importToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(20, 444);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(607, 24);
             this.menu.TabIndex = 0;
-            // 
-            // menuToolStripMenuItem
-            // 
-            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingsToolStripMenuItem,
-            this.importToolStripMenuItem});
-            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.menuToolStripMenuItem.Text = "Menu";
             // 
             // settingsToolStripMenuItem
             // 
@@ -611,7 +602,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menu;
-        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private MetroFramework.Controls.MetroTabControl tabControlSR;
         private MetroFramework.Controls.MetroTabPage tabPageSearch;
