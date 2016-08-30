@@ -70,6 +70,7 @@
             this.pnlPlaylistControls = new MetroFramework.Controls.MetroPanel();
             this.btnOpenPlaylist = new MetroFramework.Controls.MetroButton();
             this.picBoxLogo = new System.Windows.Forms.PictureBox();
+            this.installerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.tabControlSR.SuspendLayout();
             this.tabPageSearch.SuspendLayout();
@@ -89,7 +90,8 @@
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingsToolStripMenuItem,
             this.importToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.installerToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(20, 444);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(607, 24);
@@ -98,7 +100,7 @@
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
@@ -108,20 +110,20 @@
             this.artistTitleToolStripMenuItem,
             this.titleArtistToolStripMenuItem});
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.importToolStripMenuItem.Text = "Import list";
             // 
             // artistTitleToolStripMenuItem
             // 
             this.artistTitleToolStripMenuItem.Name = "artistTitleToolStripMenuItem";
-            this.artistTitleToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.artistTitleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.artistTitleToolStripMenuItem.Text = "Artist - Title";
             this.artistTitleToolStripMenuItem.Click += new System.EventHandler(this.artistTitleToolStripMenuItem_Click);
             // 
             // titleArtistToolStripMenuItem
             // 
             this.titleArtistToolStripMenuItem.Name = "titleArtistToolStripMenuItem";
-            this.titleArtistToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.titleArtistToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.titleArtistToolStripMenuItem.Text = "Title - Artist";
             this.titleArtistToolStripMenuItem.Click += new System.EventHandler(this.titleArtistToolStripMenuItem_Click);
             // 
@@ -567,6 +569,14 @@
             this.picBoxLogo.TabIndex = 3;
             this.picBoxLogo.TabStop = false;
             // 
+            // installerToolStripMenuItem
+            // 
+            this.installerToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.installerToolStripMenuItem.Name = "installerToolStripMenuItem";
+            this.installerToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.installerToolStripMenuItem.Text = "Installer (beta)";
+            this.installerToolStripMenuItem.Click += new System.EventHandler(this.installerToolStripMenuItem_Click);
+            // 
             // FrmMain
             // 
             this.AcceptButton = this.btnSearch;
@@ -641,6 +651,7 @@
         private MetroFramework.Controls.MetroButton btnGetMyStations;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.PictureBox picBoxLogo;
+        private System.Windows.Forms.ToolStripMenuItem installerToolStripMenuItem;
     }
 }
 
