@@ -29,32 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInstaller));
-            this.lblDownloadPython = new MetroFramework.Controls.MetroLabel();
-            this.lblInstallPython = new MetroFramework.Controls.MetroLabel();
+            this.lblInstallOSRequirements = new MetroFramework.Controls.MetroLabel();
             this.lblDownloadProxy = new MetroFramework.Controls.MetroLabel();
             this.lblExtractProxy = new MetroFramework.Controls.MetroLabel();
             this.lblInstallRequirements = new MetroFramework.Controls.MetroLabel();
             this.lblConfigureProxy = new MetroFramework.Controls.MetroLabel();
             this.btnInstall = new MetroFramework.Controls.MetroButton();
+            this.lblCheckOSRequirements = new MetroFramework.Controls.MetroLabel();
+            this.btnInstallBash = new MetroFramework.Controls.MetroButton();
             this.SuspendLayout();
             // 
-            // lblDownloadPython
+            // lblInstallOSRequirements
             // 
-            this.lblDownloadPython.AutoSize = true;
-            this.lblDownloadPython.Location = new System.Drawing.Point(23, 60);
-            this.lblDownloadPython.Name = "lblDownloadPython";
-            this.lblDownloadPython.Size = new System.Drawing.Size(124, 19);
-            this.lblDownloadPython.TabIndex = 0;
-            this.lblDownloadPython.Text = "1. Download Python";
-            // 
-            // lblInstallPython
-            // 
-            this.lblInstallPython.AutoSize = true;
-            this.lblInstallPython.Location = new System.Drawing.Point(23, 79);
-            this.lblInstallPython.Name = "lblInstallPython";
-            this.lblInstallPython.Size = new System.Drawing.Size(99, 19);
-            this.lblInstallPython.TabIndex = 1;
-            this.lblInstallPython.Text = "2. Install Python";
+            this.lblInstallOSRequirements.AutoSize = true;
+            this.lblInstallOSRequirements.Location = new System.Drawing.Point(23, 79);
+            this.lblInstallOSRequirements.Name = "lblInstallOSRequirements";
+            this.lblInstallOSRequirements.Size = new System.Drawing.Size(158, 19);
+            this.lblInstallOSRequirements.TabIndex = 0;
+            this.lblInstallOSRequirements.Text = "2. Install OS requirements";
             // 
             // lblDownloadProxy
             // 
@@ -94,6 +86,7 @@
             // 
             // btnInstall
             // 
+            this.btnInstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnInstall.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.btnInstall.Location = new System.Drawing.Point(227, 212);
             this.btnInstall.Name = "btnInstall";
@@ -103,18 +96,39 @@
             this.btnInstall.UseSelectable = true;
             this.btnInstall.Click += new System.EventHandler(this.btnInstall_Click);
             // 
+            // lblCheckOSRequirements
+            // 
+            this.lblCheckOSRequirements.AutoSize = true;
+            this.lblCheckOSRequirements.Location = new System.Drawing.Point(23, 60);
+            this.lblCheckOSRequirements.Name = "lblCheckOSRequirements";
+            this.lblCheckOSRequirements.Size = new System.Drawing.Size(159, 19);
+            this.lblCheckOSRequirements.TabIndex = 7;
+            this.lblCheckOSRequirements.Text = "1. Check OS requirements";
+            // 
+            // btnInstallBash
+            // 
+            this.btnInstallBash.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.btnInstallBash.Location = new System.Drawing.Point(23, 212);
+            this.btnInstallBash.Name = "btnInstallBash";
+            this.btnInstallBash.Size = new System.Drawing.Size(88, 23);
+            this.btnInstallBash.TabIndex = 8;
+            this.btnInstallBash.Text = "Install bash";
+            this.btnInstallBash.UseSelectable = true;
+            this.btnInstallBash.Click += new System.EventHandler(this.btnInstallBash_Click);
+            // 
             // FrmInstaller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(325, 258);
+            this.Controls.Add(this.btnInstallBash);
+            this.Controls.Add(this.lblCheckOSRequirements);
             this.Controls.Add(this.btnInstall);
             this.Controls.Add(this.lblConfigureProxy);
             this.Controls.Add(this.lblInstallRequirements);
             this.Controls.Add(this.lblExtractProxy);
             this.Controls.Add(this.lblDownloadProxy);
-            this.Controls.Add(this.lblInstallPython);
-            this.Controls.Add(this.lblDownloadPython);
+            this.Controls.Add(this.lblInstallOSRequirements);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FrmInstaller";
@@ -128,12 +142,13 @@
 
         #endregion
 
-        private MetroFramework.Controls.MetroLabel lblDownloadPython;
-        private MetroFramework.Controls.MetroLabel lblInstallPython;
+        private MetroFramework.Controls.MetroLabel lblInstallOSRequirements;
         private MetroFramework.Controls.MetroLabel lblDownloadProxy;
         private MetroFramework.Controls.MetroLabel lblExtractProxy;
         private MetroFramework.Controls.MetroLabel lblInstallRequirements;
         private MetroFramework.Controls.MetroLabel lblConfigureProxy;
         private MetroFramework.Controls.MetroButton btnInstall;
+        private MetroFramework.Controls.MetroLabel lblCheckOSRequirements;
+        private MetroFramework.Controls.MetroButton btnInstallBash;
     }
 }

@@ -496,6 +496,17 @@ namespace GMusicProxyGui
         {
             new FrmInstaller().ShowDialog(this);
         }
+
+        private void controlPanelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmControlPanel().ShowDialog(this);
+        }
+
+        private void configToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmConfigInput().ShowDialog(this);
+        }
         #endregion
+
     }
 }

@@ -71,6 +71,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmConfigInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConfigInput.Designer.cs">
+      <DependentUpon>FrmConfigInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmControlPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmControlPanel.Designer.cs">
+      <DependentUpon>FrmControlPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmInstaller.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +108,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebApi.cs" />
     <Compile Include="WebController.cs" />
+    <EmbeddedResource Include="FrmConfigInput.resx">
+      <DependentUpon>FrmConfigInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmControlPanel.resx">
+      <DependentUpon>FrmControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmInstaller.resx">
       <DependentUpon>FrmInstaller.cs</DependentUpon>
     </EmbeddedResource>

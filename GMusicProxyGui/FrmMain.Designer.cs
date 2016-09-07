@@ -36,6 +36,8 @@
             this.artistTitleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.titleArtistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.installerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlSR = new MetroFramework.Controls.MetroTabControl();
             this.tabPageSearch = new MetroFramework.Controls.MetroTabPage();
             this.btnGetMyStations = new MetroFramework.Controls.MetroButton();
@@ -70,7 +72,8 @@
             this.pnlPlaylistControls = new MetroFramework.Controls.MetroPanel();
             this.btnOpenPlaylist = new MetroFramework.Controls.MetroButton();
             this.picBoxLogo = new System.Windows.Forms.PictureBox();
-            this.installerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.controlPanelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.tabControlSR.SuspendLayout();
             this.tabPageSearch.SuspendLayout();
@@ -91,7 +94,7 @@
             this.settingsToolStripMenuItem,
             this.importToolStripMenuItem,
             this.aboutToolStripMenuItem,
-            this.installerToolStripMenuItem});
+            this.serverToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(20, 444);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(607, 24);
@@ -116,14 +119,14 @@
             // artistTitleToolStripMenuItem
             // 
             this.artistTitleToolStripMenuItem.Name = "artistTitleToolStripMenuItem";
-            this.artistTitleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.artistTitleToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.artistTitleToolStripMenuItem.Text = "Artist - Title";
             this.artistTitleToolStripMenuItem.Click += new System.EventHandler(this.artistTitleToolStripMenuItem_Click);
             // 
             // titleArtistToolStripMenuItem
             // 
             this.titleArtistToolStripMenuItem.Name = "titleArtistToolStripMenuItem";
-            this.titleArtistToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.titleArtistToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.titleArtistToolStripMenuItem.Text = "Title - Artist";
             this.titleArtistToolStripMenuItem.Click += new System.EventHandler(this.titleArtistToolStripMenuItem_Click);
             // 
@@ -134,6 +137,23 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // serverToolStripMenuItem
+            // 
+            this.serverToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.installerToolStripMenuItem,
+            this.configToolStripMenuItem,
+            this.controlPanelToolStripMenuItem});
+            this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
+            this.serverToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.serverToolStripMenuItem.Text = "Server";
+            // 
+            // installerToolStripMenuItem
+            // 
+            this.installerToolStripMenuItem.Name = "installerToolStripMenuItem";
+            this.installerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.installerToolStripMenuItem.Text = "Installer";
+            this.installerToolStripMenuItem.Click += new System.EventHandler(this.installerToolStripMenuItem_Click);
             // 
             // tabControlSR
             // 
@@ -569,13 +589,19 @@
             this.picBoxLogo.TabIndex = 3;
             this.picBoxLogo.TabStop = false;
             // 
-            // installerToolStripMenuItem
+            // controlPanelToolStripMenuItem
             // 
-            this.installerToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.installerToolStripMenuItem.Name = "installerToolStripMenuItem";
-            this.installerToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
-            this.installerToolStripMenuItem.Text = "Installer (beta)";
-            this.installerToolStripMenuItem.Click += new System.EventHandler(this.installerToolStripMenuItem_Click);
+            this.controlPanelToolStripMenuItem.Name = "controlPanelToolStripMenuItem";
+            this.controlPanelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.controlPanelToolStripMenuItem.Text = "Control Panel";
+            this.controlPanelToolStripMenuItem.Click += new System.EventHandler(this.controlPanelToolStripMenuItem_Click);
+            // 
+            // configToolStripMenuItem
+            // 
+            this.configToolStripMenuItem.Name = "configToolStripMenuItem";
+            this.configToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.configToolStripMenuItem.Text = "Config";
+            this.configToolStripMenuItem.Click += new System.EventHandler(this.configToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
@@ -651,7 +677,10 @@
         private MetroFramework.Controls.MetroButton btnGetMyStations;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.PictureBox picBoxLogo;
+        private System.Windows.Forms.ToolStripMenuItem serverToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem installerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem controlPanelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem configToolStripMenuItem;
     }
 }
 
