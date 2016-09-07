@@ -48,7 +48,7 @@ namespace GMusicProxyGui
             lblInstallOSRequirements.AutoSize = false;
             lblInstallOSRequirements.AutoSize = true;
 
-            Process.Start(BashPath, "-c \"sudo apt-get install build-essential python2.7-dev libffi-dev libssl-dev python-pip unzip\"").WaitForExit();
+            Process.Start(BashPath, "-c \"sudo apt-get -y install build-essential python2.7-dev libffi-dev libssl-dev python-pip unzip\"").WaitForExit();
 
             lblInstallOSRequirements.FontWeight = MetroFramework.MetroLabelWeight.Light;
             return true;
