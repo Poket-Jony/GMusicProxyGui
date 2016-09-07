@@ -120,7 +120,7 @@ namespace GMusicProxyGui
         {
             if (MetroFramework.MetroMessageBox.Show(this, "Do you want to install the GMusicProxy Server?", "Install", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
-                if (CheckOSRequirements() && InstallOSRequirements() && DownloadProxy() && ExtractProxy() && InstallRequirements() && ConfigureProxy())
+                if (CheckOSRequirements() && InstallOSRequirements() && DownloadProxy() && ExtractProxy() && InstallRequirements() && ConfigureProxy() && InstallRequirements()) //InstallRequirements 2x
                 {
                     MetroFramework.MetroMessageBox.Show(this, "Installation is finished", "Install success", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     this.Close();

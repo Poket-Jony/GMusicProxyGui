@@ -57,6 +57,7 @@ namespace GMusicProxyGui
             if (!File.Exists(StatusFile))
             {
                 File.WriteAllText(StatusFile, "GMusicProxy", Encoding.UTF8);
+                Process.Start(BashPath);
                 Process.Start(BashPath, "-c \"cd gmusicproxy-master; ./start.sh\"").WaitForExit();
                 RefreshStatus();
             }
