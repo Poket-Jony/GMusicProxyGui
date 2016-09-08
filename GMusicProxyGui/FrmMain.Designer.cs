@@ -38,6 +38,8 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.installerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.controlPanelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlSR = new MetroFramework.Controls.MetroTabControl();
             this.tabPageSearch = new MetroFramework.Controls.MetroTabPage();
             this.btnGetMyStations = new MetroFramework.Controls.MetroButton();
@@ -72,8 +74,6 @@
             this.pnlPlaylistControls = new MetroFramework.Controls.MetroPanel();
             this.btnOpenPlaylist = new MetroFramework.Controls.MetroButton();
             this.picBoxLogo = new System.Windows.Forms.PictureBox();
-            this.controlPanelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.tabControlSR.SuspendLayout();
             this.tabPageSearch.SuspendLayout();
@@ -151,9 +151,23 @@
             // installerToolStripMenuItem
             // 
             this.installerToolStripMenuItem.Name = "installerToolStripMenuItem";
-            this.installerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.installerToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.installerToolStripMenuItem.Text = "Installer";
             this.installerToolStripMenuItem.Click += new System.EventHandler(this.installerToolStripMenuItem_Click);
+            // 
+            // configToolStripMenuItem
+            // 
+            this.configToolStripMenuItem.Name = "configToolStripMenuItem";
+            this.configToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.configToolStripMenuItem.Text = "Config";
+            this.configToolStripMenuItem.Click += new System.EventHandler(this.configToolStripMenuItem_Click);
+            // 
+            // controlPanelToolStripMenuItem
+            // 
+            this.controlPanelToolStripMenuItem.Name = "controlPanelToolStripMenuItem";
+            this.controlPanelToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.controlPanelToolStripMenuItem.Text = "Control Panel";
+            this.controlPanelToolStripMenuItem.Click += new System.EventHandler(this.controlPanelToolStripMenuItem_Click);
             // 
             // tabControlSR
             // 
@@ -164,7 +178,7 @@
             this.tabControlSR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlSR.Location = new System.Drawing.Point(20, 60);
             this.tabControlSR.Name = "tabControlSR";
-            this.tabControlSR.SelectedIndex = 0;
+            this.tabControlSR.SelectedIndex = 2;
             this.tabControlSR.Size = new System.Drawing.Size(607, 384);
             this.tabControlSR.Style = MetroFramework.MetroColorStyle.Orange;
             this.tabControlSR.TabIndex = 2;
@@ -498,6 +512,7 @@
             this.progressBarDownload.Location = new System.Drawing.Point(0, 3);
             this.progressBarDownload.Name = "progressBarDownload";
             this.progressBarDownload.Size = new System.Drawing.Size(392, 23);
+            this.progressBarDownload.Style = MetroFramework.MetroColorStyle.Orange;
             this.progressBarDownload.TabIndex = 1;
             // 
             // btnDownload
@@ -588,20 +603,6 @@
             this.picBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBoxLogo.TabIndex = 3;
             this.picBoxLogo.TabStop = false;
-            // 
-            // controlPanelToolStripMenuItem
-            // 
-            this.controlPanelToolStripMenuItem.Name = "controlPanelToolStripMenuItem";
-            this.controlPanelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.controlPanelToolStripMenuItem.Text = "Control Panel";
-            this.controlPanelToolStripMenuItem.Click += new System.EventHandler(this.controlPanelToolStripMenuItem_Click);
-            // 
-            // configToolStripMenuItem
-            // 
-            this.configToolStripMenuItem.Name = "configToolStripMenuItem";
-            this.configToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.configToolStripMenuItem.Text = "Config";
-            this.configToolStripMenuItem.Click += new System.EventHandler(this.configToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
