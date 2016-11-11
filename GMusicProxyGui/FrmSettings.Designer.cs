@@ -38,6 +38,8 @@
             this.btnToDefault = new MetroFramework.Controls.MetroButton();
             this.lblMusicCount = new MetroFramework.Controls.MetroLabel();
             this.numMusicCount = new System.Windows.Forms.NumericUpDown();
+            this.chkBoxIgnoreErrors = new MetroFramework.Controls.MetroCheckBox();
+            this.lblIgnoreErrors = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.numMusicCount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -133,7 +135,7 @@
             // btnSave
             // 
             this.btnSave.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.btnSave.Location = new System.Drawing.Point(262, 206);
+            this.btnSave.Location = new System.Drawing.Point(262, 266);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 5;
@@ -144,7 +146,7 @@
             // btnToDefault
             // 
             this.btnToDefault.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.btnToDefault.Location = new System.Drawing.Point(148, 206);
+            this.btnToDefault.Location = new System.Drawing.Point(148, 266);
             this.btnToDefault.Name = "btnToDefault";
             this.btnToDefault.Size = new System.Drawing.Size(75, 23);
             this.btnToDefault.TabIndex = 6;
@@ -179,12 +181,33 @@
             0,
             0});
             // 
+            // chkBoxIgnoreErrors
+            // 
+            this.chkBoxIgnoreErrors.AutoSize = true;
+            this.chkBoxIgnoreErrors.Location = new System.Drawing.Point(148, 224);
+            this.chkBoxIgnoreErrors.Name = "chkBoxIgnoreErrors";
+            this.chkBoxIgnoreErrors.Size = new System.Drawing.Size(26, 15);
+            this.chkBoxIgnoreErrors.TabIndex = 9;
+            this.chkBoxIgnoreErrors.Text = " ";
+            this.chkBoxIgnoreErrors.UseSelectable = true;
+            // 
+            // lblIgnoreErrors
+            // 
+            this.lblIgnoreErrors.AutoSize = true;
+            this.lblIgnoreErrors.Location = new System.Drawing.Point(23, 220);
+            this.lblIgnoreErrors.Name = "lblIgnoreErrors";
+            this.lblIgnoreErrors.Size = new System.Drawing.Size(89, 19);
+            this.lblIgnoreErrors.TabIndex = 10;
+            this.lblIgnoreErrors.Text = "Ignore Errors:";
+            // 
             // FrmSettings
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 256);
+            this.ClientSize = new System.Drawing.Size(390, 312);
+            this.Controls.Add(this.lblIgnoreErrors);
+            this.Controls.Add(this.chkBoxIgnoreErrors);
             this.Controls.Add(this.numMusicCount);
             this.Controls.Add(this.lblMusicCount);
             this.Controls.Add(this.btnToDefault);
@@ -218,5 +241,7 @@
         private MetroFramework.Controls.MetroButton btnToDefault;
         private MetroFramework.Controls.MetroLabel lblMusicCount;
         private System.Windows.Forms.NumericUpDown numMusicCount;
+        private MetroFramework.Controls.MetroCheckBox chkBoxIgnoreErrors;
+        private MetroFramework.Controls.MetroLabel lblIgnoreErrors;
     }
 }

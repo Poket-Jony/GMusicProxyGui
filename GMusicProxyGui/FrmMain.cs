@@ -17,6 +17,12 @@ namespace GMusicProxyGui
         {
             InitializeComponent();
             new FrmSettings().CheckFirstStartup();
+            Init();
+        }
+
+        private void Init()
+        {
+            tabControlSR.SelectedTab = tabPageSearch;
         }
 
         #region Search
@@ -277,10 +283,18 @@ namespace GMusicProxyGui
                             File.Delete(musicEntry.FilePath);
                         }
                         catch { }
-                        if (MetroFramework.MetroMessageBox.Show(this, "Error at item " + progressBarDownload.Value + ":\n" + e.ToString(), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Exclamation) == DialogResult.Retry)
-                            goto start_download;
+                        if (!Properties.Settings.Default.ignoreErrors)
+                        {
+                            DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Error at item " + progressBarDownload.Value + ":\n" + e.ToString(), "Error", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Exclamation);
+                            if (dialogResult == DialogResult.Retry)
+                                goto start_download;
+                            else if (dialogResult == DialogResult.Ignore)
+                                continue;
+                            else
+                                break;
+                        }
                         else
-                            break;
+                            continue;
                     }
                 }
                 progressBarDownload.Value = 0;

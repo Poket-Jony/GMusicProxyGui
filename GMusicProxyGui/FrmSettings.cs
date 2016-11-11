@@ -24,6 +24,7 @@ namespace GMusicProxyGui
             txtBoxMusicPath.Text = Properties.Settings.Default.musicPath;
             txtBoxProxyUrl.Text = Properties.Settings.Default.proxyUrl;
             numMusicCount.Value = Properties.Settings.Default.resultCount;
+            chkBoxIgnoreErrors.Checked = Properties.Settings.Default.ignoreErrors;
         }
 
         private void ToDefault()
@@ -31,6 +32,7 @@ namespace GMusicProxyGui
             Properties.Settings.Default.musicPath = Application.StartupPath;
             Properties.Settings.Default.proxyUrl = "http://localhost:9999/";
             Properties.Settings.Default.resultCount = 20;
+            Properties.Settings.Default.ignoreErrors = false;
             Properties.Settings.Default.Save();
             LoadSettings();
         }
@@ -42,6 +44,7 @@ namespace GMusicProxyGui
                 Properties.Settings.Default.musicPath = txtBoxMusicPath.Text;
                 Properties.Settings.Default.proxyUrl = txtBoxProxyUrl.Text;
                 Properties.Settings.Default.resultCount = (int)numMusicCount.Value;
+                Properties.Settings.Default.ignoreErrors = chkBoxIgnoreErrors.Checked;
                 Properties.Settings.Default.Save();
             }
         }
