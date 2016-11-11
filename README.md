@@ -12,5 +12,12 @@ Please note the attached license to use this software.
 
 GMusicProxy: https://github.com/diraimondo/gmusicproxy
 
+##Bugs
+- "Get my stations" not work, because of an failure in the GMusicProxy.
+- Some titles can not be downloaded, because of an failure in the GMusicProxy.
+- In the first search may occur problems, because of an failure in the GMusicProxy.
+- Playlists that do not belong to me, can not be opened, because of an failure in the GMusicProxy.
+- The server feature is very experimental.
+
 ##Screenshot
 ![GMusicProxyGui](https://github.com/Poket-Jony/GMusicProxyGui/raw/master/gmusicproxygui_screenshot.jpg)
