@@ -29,7 +29,8 @@ namespace GMusicProxyGui
 
         private void ToDefault()
         {
-            Properties.Settings.Default.musicPath = Application.StartupPath;
+            Properties.Settings.Default.musicPath = Path.Combine(Application.StartupPath, "music");
+            CreateMusicPath();
             Properties.Settings.Default.proxyUrl = "http://localhost:9999/";
             Properties.Settings.Default.resultCount = 20;
             Properties.Settings.Default.ignoreErrors = false;
@@ -42,11 +43,18 @@ namespace GMusicProxyGui
             if (!string.IsNullOrEmpty(txtBoxMusicPath.Text) && !string.IsNullOrEmpty(txtBoxProxyUrl.Text))
             {
                 Properties.Settings.Default.musicPath = txtBoxMusicPath.Text;
+                CreateMusicPath();
                 Properties.Settings.Default.proxyUrl = txtBoxProxyUrl.Text;
                 Properties.Settings.Default.resultCount = (int)numMusicCount.Value;
                 Properties.Settings.Default.ignoreErrors = chkBoxIgnoreErrors.Checked;
                 Properties.Settings.Default.Save();
             }
+        }
+
+        private void CreateMusicPath()
+        {
+            if (!Directory.Exists(Properties.Settings.Default.musicPath))
+                Directory.CreateDirectory(Properties.Settings.Default.musicPath);
         }
 
         public bool CheckFirstStartup()

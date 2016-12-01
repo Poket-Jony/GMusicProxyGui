@@ -144,6 +144,7 @@
             this.installerToolStripMenuItem,
             this.configToolStripMenuItem,
             this.controlPanelToolStripMenuItem});
+            this.serverToolStripMenuItem.Enabled = false;
             this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
             this.serverToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.serverToolStripMenuItem.Text = "Server";
@@ -151,21 +152,21 @@
             // installerToolStripMenuItem
             // 
             this.installerToolStripMenuItem.Name = "installerToolStripMenuItem";
-            this.installerToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.installerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.installerToolStripMenuItem.Text = "Installer";
             this.installerToolStripMenuItem.Click += new System.EventHandler(this.installerToolStripMenuItem_Click);
             // 
             // configToolStripMenuItem
             // 
             this.configToolStripMenuItem.Name = "configToolStripMenuItem";
-            this.configToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.configToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.configToolStripMenuItem.Text = "Config";
             this.configToolStripMenuItem.Click += new System.EventHandler(this.configToolStripMenuItem_Click);
             // 
             // controlPanelToolStripMenuItem
             // 
             this.controlPanelToolStripMenuItem.Name = "controlPanelToolStripMenuItem";
-            this.controlPanelToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.controlPanelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.controlPanelToolStripMenuItem.Text = "Control Panel";
             this.controlPanelToolStripMenuItem.Click += new System.EventHandler(this.controlPanelToolStripMenuItem_Click);
             // 
@@ -178,7 +179,7 @@
             this.tabControlSR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlSR.Location = new System.Drawing.Point(20, 60);
             this.tabControlSR.Name = "tabControlSR";
-            this.tabControlSR.SelectedIndex = 2;
+            this.tabControlSR.SelectedIndex = 0;
             this.tabControlSR.Size = new System.Drawing.Size(607, 384);
             this.tabControlSR.Style = MetroFramework.MetroColorStyle.Orange;
             this.tabControlSR.TabIndex = 2;
@@ -210,6 +211,7 @@
             // 
             // btnGetMyStations
             // 
+            this.btnGetMyStations.Enabled = false;
             this.btnGetMyStations.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.btnGetMyStations.Location = new System.Drawing.Point(235, 94);
             this.btnGetMyStations.Name = "btnGetMyStations";

@@ -33,9 +33,14 @@ namespace GMusicProxyGui
                 Console.WriteLine(req);
                 return client.DownloadString(req);
             }
-            catch(Exception e)
+            catch(WebException ex)
             {
-                MessageBox.Show("Error at RequestString:\n" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("WebException (" + Enum.GetName(typeof(WebExceptionStatus), ex.Status) + "):\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return null;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error at RequestString:\n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return null;
             }
         }
