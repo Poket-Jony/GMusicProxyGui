@@ -22,53 +22,5 @@ namespace GMusicProxyGui.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string proxyUrl {
-            get {
-                return ((string)(this["proxyUrl"]));
-            }
-            set {
-                this["proxyUrl"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string musicPath {
-            get {
-                return ((string)(this["musicPath"]));
-            }
-            set {
-                this["musicPath"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("20")]
-        public int resultCount {
-            get {
-                return ((int)(this["resultCount"]));
-            }
-            set {
-                this["resultCount"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ignoreErrors {
-            get {
-                return ((bool)(this["ignoreErrors"]));
-            }
-            set {
-                this["ignoreErrors"] = value;
-            }
-        }
     }
 }

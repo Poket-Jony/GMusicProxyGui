@@ -16,7 +16,7 @@ namespace GMusicProxyGui
         public FrmMain()
         {
             InitializeComponent();
-            new FrmSettings().CheckFirstStartup();
+            ConfigController.CheckFirstStartup();
             Init();
         }
 
@@ -32,7 +32,7 @@ namespace GMusicProxyGui
                 return;
             ClearResultList();
             Cursor.Current = Cursors.WaitCursor;
-            List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicBySearch(title, artist, Properties.Settings.Default.resultCount);
+            List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicBySearch(title, artist, ConfigController.ResultCount);
             Cursor.Current = Cursors.Default;
             if (musicEntrys == null || musicEntrys.Count == 0)
                 return;
@@ -73,7 +73,7 @@ namespace GMusicProxyGui
             Cursor.Current = Cursors.Default;
             if (string.IsNullOrEmpty(artistId))
                 return;
-            List<MusicEntry> musicEntrys = WebApi.Instance.GetArtistTopTracksById(artistId, Properties.Settings.Default.resultCount);
+            List<MusicEntry> musicEntrys = WebApi.Instance.GetArtistTopTracksById(artistId, ConfigController.ResultCount);
             foreach (MusicEntry musicEntry in musicEntrys)
             {
                 AddResultListItem(musicEntry);
@@ -142,7 +142,7 @@ namespace GMusicProxyGui
                 return;
             ClearResultList();
             Cursor.Current = Cursors.WaitCursor;
-            List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicByMixSearch(title, artist, Properties.Settings.Default.resultCount);
+            List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicByMixSearch(title, artist, ConfigController.ResultCount);
             Cursor.Current = Cursors.Default;
             if (musicEntrys == null || musicEntrys.Count == 0)
                 return;
@@ -283,7 +283,7 @@ namespace GMusicProxyGui
                             File.Delete(musicEntry.FilePath);
                         }
                         catch { }
-                        if (!Properties.Settings.Default.ignoreErrors)
+                        if (!ConfigController.IgnoreErrors)
                         {
                             DialogResult dialogResult = MetroFramework.MetroMessageBox.Show(this, "Error at item " + progressBarDownload.Value + ":\n" + e.ToString(), "Error", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Exclamation);
                             if (dialogResult == DialogResult.Retry)

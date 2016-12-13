@@ -21,55 +21,37 @@ namespace GMusicProxyGui
 
         private void LoadSettings()
         {
-            txtBoxMusicPath.Text = Properties.Settings.Default.musicPath;
-            txtBoxProxyUrl.Text = Properties.Settings.Default.proxyUrl;
-            numMusicCount.Value = Properties.Settings.Default.resultCount;
-            chkBoxIgnoreErrors.Checked = Properties.Settings.Default.ignoreErrors;
-        }
-
-        private void ToDefault()
-        {
-            Properties.Settings.Default.musicPath = Path.Combine(Application.StartupPath, "music");
-            CreateMusicPath();
-            Properties.Settings.Default.proxyUrl = "http://localhost:9999/";
-            Properties.Settings.Default.resultCount = 20;
-            Properties.Settings.Default.ignoreErrors = false;
-            Properties.Settings.Default.Save();
-            LoadSettings();
+            txtBoxMusicPath.Text = ConfigController.MusicPath;
+            txtBoxProxyUrl.Text = ConfigController.ProxyUrl;
+            numMusicCount.Value = ConfigController.ResultCount;
+            chkBoxIgnoreErrors.Checked = ConfigController.IgnoreErrors;
         }
 
         private void SaveSettings()
         {
             if (!string.IsNullOrEmpty(txtBoxMusicPath.Text) && !string.IsNullOrEmpty(txtBoxProxyUrl.Text))
             {
-                Properties.Settings.Default.musicPath = txtBoxMusicPath.Text;
+                ConfigController.MusicPath = txtBoxMusicPath.Text;
                 CreateMusicPath();
-                Properties.Settings.Default.proxyUrl = txtBoxProxyUrl.Text;
-                Properties.Settings.Default.resultCount = (int)numMusicCount.Value;
-                Properties.Settings.Default.ignoreErrors = chkBoxIgnoreErrors.Checked;
-                Properties.Settings.Default.Save();
+                ConfigController.ProxyUrl = txtBoxProxyUrl.Text;
+                ConfigController.ResultCount = (int)numMusicCount.Value;
+                ConfigController.IgnoreErrors = chkBoxIgnoreErrors.Checked;
             }
         }
 
         private void CreateMusicPath()
         {
-            if (!Directory.Exists(Properties.Settings.Default.musicPath))
-                Directory.CreateDirectory(Properties.Settings.Default.musicPath);
-        }
-
-        public bool CheckFirstStartup()
-        {
-            if(string.IsNullOrEmpty(Properties.Settings.Default.musicPath))
-            {
-                ToDefault();
-                return true;
-            }
-            return false;
+            if (string.IsNullOrEmpty(ConfigController.MusicPath))
+                return;
+            if (!Directory.Exists(ConfigController.MusicPath))
+                Directory.CreateDirectory(ConfigController.MusicPath);
         }
 
         private void btnToDefault_Click(object sender, EventArgs e)
         {
-            ToDefault();
+            ConfigController.ToDefault();
+            CreateMusicPath();
+            LoadSettings();
         }
 
         private void btnSave_Click(object sender, EventArgs e)

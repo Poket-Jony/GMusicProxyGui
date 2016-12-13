@@ -72,8 +72,12 @@
       <HintPath>..\packages\taglib.2.1.0.0\lib\taglib-sharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="XmlDataStore">
+      <HintPath>..\..\..\..\Documents\Visual Studio 2015\Projects\XmlDataStore\XmlDataStore\bin\Debug\XmlDataStore.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigController.cs" />
     <Compile Include="FrmConfigInput.cs">
       <SubType>Form</SubType>
     </Compile>

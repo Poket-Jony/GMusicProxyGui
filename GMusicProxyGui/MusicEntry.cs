@@ -48,7 +48,7 @@ namespace GMusicProxyGui
         public void UpdateFilePath()
         {
             string path = CleanFileName(string.Format("{0} - {1}.mp3", Artist, Title));
-            FilePath = Path.Combine(Properties.Settings.Default.musicPath, path);
+            FilePath = Path.Combine(ConfigController.MusicPath, path);
         }
 
         private string CleanFileName(string fileName)

@@ -25,7 +25,7 @@ namespace GMusicProxyGui
 
         private WebApi()
         {
-            webController = new WebController(Properties.Settings.Default.proxyUrl);
+            webController = new WebController(ConfigController.ProxyUrl);
         }
 
         public static WebApi GetNewInstance()
