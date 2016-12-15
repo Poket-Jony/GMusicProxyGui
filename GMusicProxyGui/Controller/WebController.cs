@@ -7,8 +7,9 @@ using System.Net;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+using GMusicProxyGui.Model;
 
-namespace GMusicProxyGui
+namespace GMusicProxyGui.Controller
 {
     public class WebController
     {

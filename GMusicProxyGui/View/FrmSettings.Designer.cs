@@ -1,4 +1,4 @@
-﻿namespace GMusicProxyGui
+﻿namespace GMusicProxyGui.View
 {
     partial class FrmSettings
     {

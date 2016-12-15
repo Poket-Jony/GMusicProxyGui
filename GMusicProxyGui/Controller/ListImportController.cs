@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.RegularExpressions;
+using GMusicProxyGui.Model;
 
-namespace GMusicProxyGui
+namespace GMusicProxyGui.Controller
 {
-    public class ListImporter
+    public class ListImportController
     {
         private List<string> importList = new List<string>();
         public ListType Type { get; private set; }
-        public List<MusicEntry> MusicList { get; private set; }
+        public List<MusicEntryModel> MusicList { get; private set; }
 
         public enum ListType
         {
@@ -20,7 +21,7 @@ namespace GMusicProxyGui
             ArtistAndTitle
         };
 
-        public ListImporter(string path, ListType type)
+        public ListImportController(string path, ListType type)
         {
             if (File.Exists(path))
             {
@@ -30,9 +31,9 @@ namespace GMusicProxyGui
             }
         }
 
-        private List<MusicEntry> GetMusicList()
+        private List<MusicEntryModel> GetMusicList()
         {
-            List<MusicEntry> mlist = new List<MusicEntry>();
+            List<MusicEntryModel> mlist = new List<MusicEntryModel>();
             switch(Type)
             {
                 case ListType.ArtistAndTitle:
@@ -47,7 +48,7 @@ namespace GMusicProxyGui
                                 if (artist.Contains(';'))
                                     artist = artist.Remove(artist.IndexOf(';'));
                                 string title = match.Groups[2].Value;
-                                mlist.Add(new MusicEntry(artist, title));
+                                mlist.Add(new MusicEntryModel(artist, title));
                             }
                         }
                         break;
@@ -62,7 +63,7 @@ namespace GMusicProxyGui
                                 Match match = regexLine.Match(line);
                                 string artist = match.Groups[2].Value;
                                 string title = match.Groups[1].Value;
-                                mlist.Add(new MusicEntry(artist, title));
+                                mlist.Add(new MusicEntryModel(artist, title));
                             }
                         }
                         break;
@@ -71,17 +72,17 @@ namespace GMusicProxyGui
             return GetMusicListByMetaList(mlist);
         }
 
-        private List<MusicEntry> GetMusicListByMetaList(List<MusicEntry> metaList)
+        private List<MusicEntryModel> GetMusicListByMetaList(List<MusicEntryModel> metaList)
         {
-            List<MusicEntry> musicList = new List<MusicEntry>();
-            foreach(MusicEntry entry in metaList)
+            List<MusicEntryModel> musicList = new List<MusicEntryModel>();
+            foreach(MusicEntryModel entry in metaList)
             {
                 switch(Type)
                 {
                     case ListType.TitleAndArtist:
                     case ListType.ArtistAndTitle:
                     {
-                        List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicBySearch(entry.Title, entry.Artist, 1);
+                        List<MusicEntryModel> musicEntrys = ProxyApiController.Instance.GetMusicBySearch(entry.Title, entry.Artist, 1);
                         if (musicEntrys == null || musicEntrys.Count == 0)
                             continue;
                         musicList.Add(musicEntrys.First());

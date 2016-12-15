@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace GMusicProxyGui
+namespace GMusicProxyGui.View
 {
     public partial class FrmConfigInput : MetroFramework.Forms.MetroForm
     {

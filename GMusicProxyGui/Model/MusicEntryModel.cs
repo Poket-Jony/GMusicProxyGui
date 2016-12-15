@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Drawing;
+using GMusicProxyGui.Controller;
 
-namespace GMusicProxyGui
+namespace GMusicProxyGui.Model
 {
-    public class MusicEntry
+    public class MusicEntryModel
     {
-        public MusicEntry(TimeSpan duration, string artist, string album, string title, string proxyPath)
+        public MusicEntryModel(TimeSpan duration, string artist, string album, string title, string proxyPath)
         {
             Duration = duration;
             Artist = artist;
@@ -20,13 +21,13 @@ namespace GMusicProxyGui
             ProxyPath = proxyPath;
         }
 
-        public MusicEntry(string artist, string title)
+        public MusicEntryModel(string artist, string title)
         {
             Artist = artist;
             Title = title;
         }
 
-        public MusicEntry(string proxyId)
+        public MusicEntryModel(string proxyId)
         {
             ProxyId = proxyId;
         }
@@ -91,12 +92,12 @@ namespace GMusicProxyGui
             return null;
         }
 
-        public static List<MusicEntry> GetMusicEntrysByM3U(string m3uString)
+        public static List<MusicEntryModel> GetMusicEntrysByM3U(string m3uString)
         {
             if (string.IsNullOrEmpty(m3uString))
                 return null;
 
-            List<MusicEntry> entries = new List<MusicEntry>();
+            List<MusicEntryModel> entries = new List<MusicEntryModel>();
             Regex regexLine = new Regex(@"(\d*),(.*) - (.*) - (.*)");
 
             using (StringReader reader = new StringReader(m3uString))
@@ -104,7 +105,7 @@ namespace GMusicProxyGui
                 string line;
                 int lineCount = 0;
 
-                MusicEntry entry = null;
+                MusicEntryModel entry = null;
 
                 while ((line = reader.ReadLine()) != null)
                 {
@@ -133,7 +134,7 @@ namespace GMusicProxyGui
 
                         TimeSpan duration = TimeSpan.FromSeconds(seconds);
 
-                        entry = new MusicEntry(duration, artist, album, title, null);
+                        entry = new MusicEntryModel(duration, artist, album, title, null);
                     }
                     else if (entry != null && !line.StartsWith("#")) //ignore comments
                     {

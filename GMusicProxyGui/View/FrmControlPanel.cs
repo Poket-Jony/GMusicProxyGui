@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 
-namespace GMusicProxyGui
+namespace GMusicProxyGui.View
 {
     public partial class FrmControlPanel : MetroFramework.Forms.MetroForm
     {

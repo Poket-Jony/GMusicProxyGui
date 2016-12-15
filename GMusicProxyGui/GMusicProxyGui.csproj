@@ -77,57 +77,57 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigController.cs" />
-    <Compile Include="FrmConfigInput.cs">
+    <Compile Include="Controller\ConfigController.cs" />
+    <Compile Include="View\FrmConfigInput.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmConfigInput.Designer.cs">
+    <Compile Include="View\FrmConfigInput.Designer.cs">
       <DependentUpon>FrmConfigInput.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmControlPanel.cs">
+    <Compile Include="View\FrmControlPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmControlPanel.Designer.cs">
+    <Compile Include="View\FrmControlPanel.Designer.cs">
       <DependentUpon>FrmControlPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmInstaller.cs">
+    <Compile Include="View\FrmInstaller.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmInstaller.Designer.cs">
+    <Compile Include="View\FrmInstaller.Designer.cs">
       <DependentUpon>FrmInstaller.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmMain.cs">
+    <Compile Include="View\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmMain.Designer.cs">
+    <Compile Include="View\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmSettings.cs">
+    <Compile Include="View\FrmSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmSettings.Designer.cs">
+    <Compile Include="View\FrmSettings.Designer.cs">
       <DependentUpon>FrmSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListImporter.cs" />
-    <Compile Include="MusicEntry.cs" />
-    <Compile Include="PlaylistEntry.cs" />
+    <Compile Include="Controller\ListImportController.cs" />
+    <Compile Include="Model\MusicEntryModel.cs" />
+    <Compile Include="Model\PlaylistEntryModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebApi.cs" />
-    <Compile Include="WebController.cs" />
-    <EmbeddedResource Include="FrmConfigInput.resx">
+    <Compile Include="Controller\ProxyApiController.cs" />
+    <Compile Include="Controller\WebController.cs" />
+    <EmbeddedResource Include="View\FrmConfigInput.resx">
       <DependentUpon>FrmConfigInput.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmControlPanel.resx">
+    <EmbeddedResource Include="View\FrmControlPanel.resx">
       <DependentUpon>FrmControlPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmInstaller.resx">
+    <EmbeddedResource Include="View\FrmInstaller.resx">
       <DependentUpon>FrmInstaller.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmMain.resx">
+    <EmbeddedResource Include="View\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmSettings.resx">
+    <EmbeddedResource Include="View\FrmSettings.resx">
       <DependentUpon>FrmSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -158,6 +158,7 @@
     <Content Include="google_play_music_download.ico" />
     <Content Include="NetRevisionTool.exe" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>"$(ProjectDir)NetRevisionTool.exe" /patch "$(ProjectDir)"</PreBuildEvent>

@@ -8,8 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using GMusicProxyGui.Controller;
+using GMusicProxyGui.Model;
 
-namespace GMusicProxyGui
+namespace GMusicProxyGui.View
 {
     public partial class FrmMain : MetroFramework.Forms.MetroForm
     {
@@ -32,11 +34,11 @@ namespace GMusicProxyGui
                 return;
             ClearResultList();
             Cursor.Current = Cursors.WaitCursor;
-            List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicBySearch(title, artist, ConfigController.ResultCount);
+            List<MusicEntryModel> musicEntrys = ProxyApiController.Instance.GetMusicBySearch(title, artist, ConfigController.ResultCount);
             Cursor.Current = Cursors.Default;
             if (musicEntrys == null || musicEntrys.Count == 0)
                 return;
-            foreach (MusicEntry musicEntry in musicEntrys)
+            foreach (MusicEntryModel musicEntry in musicEntrys)
             {
                 AddResultListItem(musicEntry);
             }
@@ -50,12 +52,12 @@ namespace GMusicProxyGui
                 return;
             ClearResultList();
             Cursor.Current = Cursors.WaitCursor;
-            string albumId = WebApi.Instance.GetIdBySearch(WebApi.SearchType.album, title, artist);
+            string albumId = ProxyApiController.Instance.GetIdBySearch(ProxyApiController.SearchType.album, title, artist);
             Cursor.Current = Cursors.Default;
             if (string.IsNullOrEmpty(albumId))
                 return;
-            List<MusicEntry> musicEntrys = WebApi.Instance.GetAlbumById(albumId);
-            foreach (MusicEntry musicEntry in musicEntrys)
+            List<MusicEntryModel> musicEntrys = ProxyApiController.Instance.GetAlbumById(albumId);
+            foreach (MusicEntryModel musicEntry in musicEntrys)
             {
                 AddResultListItem(musicEntry);
             }
@@ -69,12 +71,12 @@ namespace GMusicProxyGui
                 return;
             ClearResultList();
             Cursor.Current = Cursors.WaitCursor;
-            string artistId = WebApi.Instance.GetIdBySearch(WebApi.SearchType.artist, artist, artist);
+            string artistId = ProxyApiController.Instance.GetIdBySearch(ProxyApiController.SearchType.artist, artist, artist);
             Cursor.Current = Cursors.Default;
             if (string.IsNullOrEmpty(artistId))
                 return;
-            List<MusicEntry> musicEntrys = WebApi.Instance.GetArtistTopTracksById(artistId, ConfigController.ResultCount);
-            foreach (MusicEntry musicEntry in musicEntrys)
+            List<MusicEntryModel> musicEntrys = ProxyApiController.Instance.GetArtistTopTracksById(artistId, ConfigController.ResultCount);
+            foreach (MusicEntryModel musicEntry in musicEntrys)
             {
                 AddResultListItem(musicEntry);
             }
@@ -88,11 +90,11 @@ namespace GMusicProxyGui
                 return;
             ClearPlaylistList();
             Cursor.Current = Cursors.WaitCursor;
-            List<PlaylistEntry> playlistEntrys = WebApi.Instance.GetMyPlaylists();
+            List<PlaylistEntryModel> playlistEntrys = ProxyApiController.Instance.GetMyPlaylists();
             Cursor.Current = Cursors.Default;
             if (playlistEntrys == null || playlistEntrys.Count == 0)
                 return;
-            foreach (PlaylistEntry playlistEntry in playlistEntrys)
+            foreach (PlaylistEntryModel playlistEntry in playlistEntrys)
             {
                 AddPlaylistListItem(playlistEntry);
             }
@@ -106,11 +108,11 @@ namespace GMusicProxyGui
                 return;
             ClearPlaylistList();
             Cursor.Current = Cursors.WaitCursor;
-            List<PlaylistEntry> playlistEntrys = WebApi.Instance.GetMyStations();
+            List<PlaylistEntryModel> playlistEntrys = ProxyApiController.Instance.GetMyStations();
             Cursor.Current = Cursors.Default;
             if (playlistEntrys == null || playlistEntrys.Count == 0)
                 return;
-            foreach (PlaylistEntry playlistEntry in playlistEntrys)
+            foreach (PlaylistEntryModel playlistEntry in playlistEntrys)
             {
                 AddPlaylistListItem(playlistEntry);
             }
@@ -118,17 +120,17 @@ namespace GMusicProxyGui
             tabControlSR.SelectedTab = tabPagePlaylist;
         }
 
-        private void OpenPlaylist(PlaylistEntry playlistEntry)
+        private void OpenPlaylist(PlaylistEntryModel playlistEntry)
         {
             if (!downloadAvaible)
                 return;
             ClearResultList();
             Cursor.Current = Cursors.WaitCursor;
-            List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicByPlaylist(playlistEntry);
+            List<MusicEntryModel> musicEntrys = ProxyApiController.Instance.GetMusicByPlaylist(playlistEntry);
             Cursor.Current = Cursors.Default;
             if (musicEntrys == null || musicEntrys.Count == 0)
                 return;
-            foreach (MusicEntry musicEntry in musicEntrys)
+            foreach (MusicEntryModel musicEntry in musicEntrys)
             {
                 AddResultListItem(musicEntry);
             }
@@ -142,11 +144,11 @@ namespace GMusicProxyGui
                 return;
             ClearResultList();
             Cursor.Current = Cursors.WaitCursor;
-            List<MusicEntry> musicEntrys = WebApi.Instance.GetMusicByMixSearch(title, artist, ConfigController.ResultCount);
+            List<MusicEntryModel> musicEntrys = ProxyApiController.Instance.GetMusicByMixSearch(title, artist, ConfigController.ResultCount);
             Cursor.Current = Cursors.Default;
             if (musicEntrys == null || musicEntrys.Count == 0)
                 return;
-            foreach (MusicEntry musicEntry in musicEntrys)
+            foreach (MusicEntryModel musicEntry in musicEntrys)
             {
                 AddResultListItem(musicEntry);
             }
@@ -181,7 +183,7 @@ namespace GMusicProxyGui
             listViewPlaylist.Items.Clear();
         }
 
-        private void RemoveFromDownloadList(MusicEntry musicEntry)
+        private void RemoveFromDownloadList(MusicEntryModel musicEntry)
         {
             if (musicEntry != null)
             {
@@ -190,7 +192,7 @@ namespace GMusicProxyGui
             }
         }
 
-        private void AddResultListItem(MusicEntry musicEntry)
+        private void AddResultListItem(MusicEntryModel musicEntry)
         {
             if (listViewResult.Items.Find(musicEntry.ProxyId, false).Length != 0)
                 return;
@@ -210,7 +212,7 @@ namespace GMusicProxyGui
                 }
             }
         }
-        private void AddPlaylistListItem(PlaylistEntry playlistEntry)
+        private void AddPlaylistListItem(PlaylistEntryModel playlistEntry)
         {
             if (listViewPlaylist.Items.Find(playlistEntry.ProxyId, false).Length != 0)
                 return;
@@ -220,7 +222,7 @@ namespace GMusicProxyGui
             listViewPlaylist.Items.Add(item);
         }
 
-        private void AddDownloadListItem(MusicEntry musicEntry)
+        private void AddDownloadListItem(MusicEntryModel musicEntry)
         {
             if (listViewDownload.Items.Find(musicEntry.ProxyId, false).Length != 0)
                 return;
@@ -253,7 +255,7 @@ namespace GMusicProxyGui
                 List<ListViewItem> downloadItems = new List<ListViewItem>();
                 foreach (ListViewItem item in listViewDownload.SelectedItems)
                 {
-                    MusicEntry musicEntry = (MusicEntry)item.Tag;
+                    MusicEntryModel musicEntry = (MusicEntryModel)item.Tag;
                     if (!musicEntry.IsFileExists())
                         downloadItems.Add(item);
                 }
@@ -263,12 +265,12 @@ namespace GMusicProxyGui
                 foreach (ListViewItem item in downloadItems)
                 {
                     progressBarDownload.Value++;
-                    MusicEntry musicEntry = (MusicEntry)item.Tag;
+                    MusicEntryModel musicEntry = (MusicEntryModel)item.Tag;
                     musicEntry.UpdateFilePath();
                     start_download:
                     try
                     {
-                        await WebApi.Instance.DownloadSong(musicEntry.ProxyPath, musicEntry.FilePath);
+                        await ProxyApiController.Instance.DownloadSong(musicEntry.ProxyPath, musicEntry.FilePath);
                         Bitmap img = musicEntry.GetCoverFromFile();
                         if (img != null)
                         {
@@ -313,7 +315,7 @@ namespace GMusicProxyGui
             {
                 foreach (ListViewItem item in listViewResult.SelectedItems)
                 {
-                    MusicEntry musicEntry = (MusicEntry)item.Tag;
+                    MusicEntryModel musicEntry = (MusicEntryModel)item.Tag;
                     AddDownloadListItem(musicEntry);
                 }
                 listViewDownload.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
@@ -330,7 +332,7 @@ namespace GMusicProxyGui
             {
                 foreach (ListViewItem item in listViewDownload.SelectedItems)
                 {
-                    MusicEntry musicEntry = (MusicEntry)item.Tag;
+                    MusicEntryModel musicEntry = (MusicEntryModel)item.Tag;
                     RemoveFromDownloadList(musicEntry);
                 }
                 listViewDownload.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
@@ -344,7 +346,7 @@ namespace GMusicProxyGui
             if (listViewPlaylist.SelectedItems.Count == 0)
                 return;
 
-            PlaylistEntry playlistEntry = (PlaylistEntry)listViewPlaylist.SelectedItems[0].Tag;
+            PlaylistEntryModel playlistEntry = (PlaylistEntryModel)listViewPlaylist.SelectedItems[0].Tag;
             OpenPlaylist(playlistEntry);
             listViewPlaylist.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
@@ -379,20 +381,20 @@ namespace GMusicProxyGui
             if(hit != null && hit.Item != null && hit.SubItem != null)
             {
                 if (hit.SubItem.Tag == columnHeaderAlbum)
-                    SearchAlbum(hit.SubItem.Text, ((MusicEntry)hit.Item.Tag).Artist);
+                    SearchAlbum(hit.SubItem.Text, ((MusicEntryModel)hit.Item.Tag).Artist);
                 else if (hit.SubItem.Tag == columnHeaderArtist)
-                    SearchArtistTopTracks(((MusicEntry)hit.Item.Tag).Artist);
+                    SearchArtistTopTracks(((MusicEntryModel)hit.Item.Tag).Artist);
                 else
                     DownloadListItems();
             }
         }
 
-        private void SearchList(ListImporter import)
+        private void SearchList(ListImportController import)
         {
             if (!downloadAvaible)
                 return;
             ClearResultList();
-            foreach (MusicEntry musicEntry in import.MusicList)
+            foreach (MusicEntryModel musicEntry in import.MusicList)
             {
                 AddResultListItem(musicEntry);
             }
@@ -408,9 +410,9 @@ namespace GMusicProxyGui
             if (hit != null && hit.Item != null && hit.SubItem != null)
             {
                 if (hit.SubItem.Tag == columnHeaderAlbum)
-                    SearchAlbum(hit.SubItem.Text, ((MusicEntry)hit.Item.Tag).Artist);
+                    SearchAlbum(hit.SubItem.Text, ((MusicEntryModel)hit.Item.Tag).Artist);
                 else if (hit.SubItem.Tag == columnHeaderArtist)
-                    SearchArtistTopTracks(((MusicEntry)hit.Item.Tag).Artist);
+                    SearchArtistTopTracks(((MusicEntryModel)hit.Item.Tag).Artist);
                 else
                     AddDownloadListItemsFromResult();
             }
@@ -482,7 +484,7 @@ namespace GMusicProxyGui
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 Cursor.Current = Cursors.WaitCursor;
-                SearchList(new ListImporter(dialog.FileName, ListImporter.ListType.ArtistAndTitle));
+                SearchList(new ListImportController(dialog.FileName, ListImportController.ListType.ArtistAndTitle));
                 Cursor.Current = Cursors.Default;
             }
         }
@@ -495,7 +497,7 @@ namespace GMusicProxyGui
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 Cursor.Current = Cursors.WaitCursor;
-                SearchList(new ListImporter(dialog.FileName, ListImporter.ListType.TitleAndArtist));
+                SearchList(new ListImportController(dialog.FileName, ListImportController.ListType.TitleAndArtist));
                 Cursor.Current = Cursors.Default;
             }
         }

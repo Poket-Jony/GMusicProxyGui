@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.IO;
+using GMusicProxyGui.Controller;
 
-namespace GMusicProxyGui
+namespace GMusicProxyGui.Model
 {
-    public class PlaylistEntry
+    public class PlaylistEntryModel
     {
-        public PlaylistEntry(string title, string proxyPath)
+        public PlaylistEntryModel(string title, string proxyPath)
         {
             Title = title;
             ProxyPath = proxyPath;
@@ -30,12 +31,12 @@ namespace GMusicProxyGui
             }
         }
 
-        public static List<PlaylistEntry> GetPlaylistEntrysByText(string textString)
+        public static List<PlaylistEntryModel> GetPlaylistEntrysByText(string textString)
         {
             if (string.IsNullOrEmpty(textString))
                 return null;
 
-            List<PlaylistEntry> entries = new List<PlaylistEntry>();
+            List<PlaylistEntryModel> entries = new List<PlaylistEntryModel>();
             using (StringReader reader = new StringReader(textString))
             {
                 string line;
@@ -49,7 +50,7 @@ namespace GMusicProxyGui
                     {
                         string title = split[0];
                         string proxyPath = split[1];
-                        entries.Add(new PlaylistEntry(title, proxyPath));
+                        entries.Add(new PlaylistEntryModel(title, proxyPath));
                     }
                     else
                         throw new Exception("Unexpected entry detected.");

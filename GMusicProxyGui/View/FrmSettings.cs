@@ -8,8 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using GMusicProxyGui.Controller;
 
-namespace GMusicProxyGui
+namespace GMusicProxyGui.View
 {
     public partial class FrmSettings : MetroFramework.Forms.MetroForm
     {
@@ -62,7 +63,7 @@ namespace GMusicProxyGui
                 return;
             }
             SaveSettings();
-            WebApi.GetNewInstance();
+            ProxyApiController.GetNewInstance();
             this.Close();
         }
 
