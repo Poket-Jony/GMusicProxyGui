@@ -305,6 +305,15 @@ namespace GMusicProxyGui.View
             }
         }
 
+        private async void PlayListItem(MusicEntryModel musicEntry)
+        {
+            string lastUrl = AudioController.Instance.AudioUrl;
+            if (AudioController.Instance.WaveOut.PlaybackState == NAudio.Wave.PlaybackState.Playing)
+                AudioController.Instance.StopAudio();
+            if(lastUrl != musicEntry.ProxyPath)
+                await AudioController.Instance.PlayMp3FromUrl(musicEntry.ProxyPath);
+        }
+
         private void AddDownloadListItemsFromResult()
         {
             if (!downloadAvaible)
@@ -385,7 +394,7 @@ namespace GMusicProxyGui.View
                 else if (hit.SubItem.Tag == columnHeaderArtist)
                     SearchArtistTopTracks(((MusicEntryModel)hit.Item.Tag).Artist);
                 else
-                    DownloadListItems();
+                    PlayListItem((MusicEntryModel)hit.Item.Tag);
             }
         }
 
@@ -414,7 +423,7 @@ namespace GMusicProxyGui.View
                 else if (hit.SubItem.Tag == columnHeaderArtist)
                     SearchArtistTopTracks(((MusicEntryModel)hit.Item.Tag).Artist);
                 else
-                    AddDownloadListItemsFromResult();
+                    PlayListItem((MusicEntryModel)hit.Item.Tag);
             }
         }
 
