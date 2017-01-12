@@ -54,5 +54,10 @@ namespace GMusicProxyGui.Controller
             WaveOut.Stop();
             AudioUrl = null;
         }
+
+        public void UpdateMusicVolume()
+        {
+            WaveOut.Volume = (float)ConfigController.MusicVolume / 10;
+        }
     }
 }

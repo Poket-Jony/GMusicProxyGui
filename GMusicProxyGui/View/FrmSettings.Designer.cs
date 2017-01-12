@@ -40,6 +40,8 @@
             this.numMusicCount = new System.Windows.Forms.NumericUpDown();
             this.chkBoxIgnoreErrors = new MetroFramework.Controls.MetroCheckBox();
             this.lblIgnoreErrors = new MetroFramework.Controls.MetroLabel();
+            this.lblVolume = new MetroFramework.Controls.MetroLabel();
+            this.trackBarVolume = new MetroFramework.Controls.MetroTrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.numMusicCount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,7 +137,7 @@
             // btnSave
             // 
             this.btnSave.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.btnSave.Location = new System.Drawing.Point(262, 266);
+            this.btnSave.Location = new System.Drawing.Point(262, 313);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 5;
@@ -146,7 +148,7 @@
             // btnToDefault
             // 
             this.btnToDefault.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.btnToDefault.Location = new System.Drawing.Point(148, 266);
+            this.btnToDefault.Location = new System.Drawing.Point(148, 313);
             this.btnToDefault.Name = "btnToDefault";
             this.btnToDefault.Size = new System.Drawing.Size(75, 23);
             this.btnToDefault.TabIndex = 6;
@@ -200,12 +202,34 @@
             this.lblIgnoreErrors.TabIndex = 10;
             this.lblIgnoreErrors.Text = "Ignore Errors:";
             // 
+            // lblVolume
+            // 
+            this.lblVolume.AutoSize = true;
+            this.lblVolume.Location = new System.Drawing.Point(23, 266);
+            this.lblVolume.Name = "lblVolume";
+            this.lblVolume.Size = new System.Drawing.Size(56, 19);
+            this.lblVolume.TabIndex = 11;
+            this.lblVolume.Text = "Volume:";
+            // 
+            // trackBarVolume
+            // 
+            this.trackBarVolume.BackColor = System.Drawing.Color.Transparent;
+            this.trackBarVolume.Location = new System.Drawing.Point(148, 266);
+            this.trackBarVolume.Maximum = 10;
+            this.trackBarVolume.Name = "trackBarVolume";
+            this.trackBarVolume.Size = new System.Drawing.Size(189, 23);
+            this.trackBarVolume.TabIndex = 12;
+            this.trackBarVolume.Value = 5;
+            this.trackBarVolume.ValueChanged += new System.EventHandler(this.trackBarVolume_ValueChanged);
+            // 
             // FrmSettings
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 312);
+            this.ClientSize = new System.Drawing.Size(390, 359);
+            this.Controls.Add(this.trackBarVolume);
+            this.Controls.Add(this.lblVolume);
             this.Controls.Add(this.lblIgnoreErrors);
             this.Controls.Add(this.chkBoxIgnoreErrors);
             this.Controls.Add(this.numMusicCount);
@@ -224,6 +248,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "Settings";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmSettings_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.numMusicCount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -243,5 +268,7 @@
         private System.Windows.Forms.NumericUpDown numMusicCount;
         private MetroFramework.Controls.MetroCheckBox chkBoxIgnoreErrors;
         private MetroFramework.Controls.MetroLabel lblIgnoreErrors;
+        private MetroFramework.Controls.MetroLabel lblVolume;
+        private MetroFramework.Controls.MetroTrackBar trackBarVolume;
     }
 }

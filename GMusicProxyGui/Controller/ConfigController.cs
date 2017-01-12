@@ -70,12 +70,26 @@ namespace GMusicProxyGui.Controller
             }
         }
 
+        public static int MusicVolume
+        {
+            get
+            {
+                return DataStore.GetInt("musicVolume");
+            }
+            set
+            {
+                DataStore.SetInt("musicVolume", value);
+                AudioController.Instance.UpdateMusicVolume();
+            }
+        }
+
         public static void ToDefault()
         {
             MusicPath = Path.Combine(Application.StartupPath, "music");
             ProxyUrl = "http://localhost:9999/";
             ResultCount = 20;
             IgnoreErrors = false;
+            MusicVolume = 5;
         }
 
         public static bool CheckFirstStartup()

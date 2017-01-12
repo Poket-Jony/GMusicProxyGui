@@ -26,6 +26,7 @@ namespace GMusicProxyGui.View
             txtBoxProxyUrl.Text = ConfigController.ProxyUrl;
             numMusicCount.Value = ConfigController.ResultCount;
             chkBoxIgnoreErrors.Checked = ConfigController.IgnoreErrors;
+            trackBarVolume.Value = ConfigController.MusicVolume;
         }
 
         private void SaveSettings()
@@ -37,6 +38,7 @@ namespace GMusicProxyGui.View
                 ConfigController.ProxyUrl = txtBoxProxyUrl.Text;
                 ConfigController.ResultCount = (int)numMusicCount.Value;
                 ConfigController.IgnoreErrors = chkBoxIgnoreErrors.Checked;
+                ConfigController.MusicVolume = trackBarVolume.Value;
             }
         }
 
@@ -74,6 +76,16 @@ namespace GMusicProxyGui.View
             dialog.SelectedPath = string.IsNullOrEmpty(txtBoxMusicPath.Text) ? Application.StartupPath : txtBoxMusicPath.Text;
             if (dialog.ShowDialog(this) == DialogResult.OK)
                 txtBoxMusicPath.Text = dialog.SelectedPath;
+        }
+
+        private void trackBarVolume_ValueChanged(object sender, EventArgs e)
+        {
+            AudioController.Instance.WaveOut.Volume = (float)trackBarVolume.Value / 10;
+        }
+
+        private void FrmSettings_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            AudioController.Instance.UpdateMusicVolume();
         }
     }
 }
