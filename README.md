@@ -19,5 +19,7 @@ GMusicProxy: https://github.com/diraimondo/gmusicproxy
 - Playlists that do not belong to me, can not be opened
 - The server feature is very experimental
 
-##Screenshot
-![GMusicProxyGui](https://github.com/Poket-Jony/GMusicProxyGui/raw/master/gmusicproxygui_screenshot.jpg)
+##Screenshots
+![GMusicProxyGui](https://github.com/Poket-Jony/GMusicProxyGui/raw/master/gmusicproxygui_screenshot_1.jpg)
+
+![GMusicProxyGui](https://github.com/Poket-Jony/GMusicProxyGui/raw/master/gmusicproxygui_screenshot_2.jpg)
