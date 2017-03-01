@@ -152,21 +152,21 @@
             // installerToolStripMenuItem
             // 
             this.installerToolStripMenuItem.Name = "installerToolStripMenuItem";
-            this.installerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.installerToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.installerToolStripMenuItem.Text = "Installer";
             this.installerToolStripMenuItem.Click += new System.EventHandler(this.installerToolStripMenuItem_Click);
             // 
             // configToolStripMenuItem
             // 
             this.configToolStripMenuItem.Name = "configToolStripMenuItem";
-            this.configToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.configToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.configToolStripMenuItem.Text = "Config";
             this.configToolStripMenuItem.Click += new System.EventHandler(this.configToolStripMenuItem_Click);
             // 
             // controlPanelToolStripMenuItem
             // 
             this.controlPanelToolStripMenuItem.Name = "controlPanelToolStripMenuItem";
-            this.controlPanelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.controlPanelToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.controlPanelToolStripMenuItem.Text = "Control Panel";
             this.controlPanelToolStripMenuItem.Click += new System.EventHandler(this.controlPanelToolStripMenuItem_Click);
             // 
@@ -211,7 +211,6 @@
             // 
             // btnGetMyStations
             // 
-            this.btnGetMyStations.Enabled = false;
             this.btnGetMyStations.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.btnGetMyStations.Location = new System.Drawing.Point(235, 94);
             this.btnGetMyStations.Name = "btnGetMyStations";

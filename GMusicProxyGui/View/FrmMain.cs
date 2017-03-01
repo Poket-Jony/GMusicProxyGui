@@ -15,6 +15,9 @@ namespace GMusicProxyGui.View
 {
     public partial class FrmMain : MetroFramework.Forms.MetroForm
     {
+        public const string RELEASE_YEAR = "2017";
+        public const string GMUSICPROXY_VERSION = "1.0.9-beta";
+
         public FrmMain()
         {
             InitializeComponent();
@@ -492,9 +495,11 @@ namespace GMusicProxyGui.View
             dialog.Title = "Select a list file to import:";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                Cursor.Current = Cursors.WaitCursor;
+                Application.UseWaitCursor = true;
+                Application.DoEvents();
                 SearchList(new ListImportController(dialog.FileName, ListImportController.ListType.ArtistAndTitle));
-                Cursor.Current = Cursors.Default;
+                Application.UseWaitCursor = false;
+                Application.DoEvents();
             }
         }
 
@@ -505,15 +510,17 @@ namespace GMusicProxyGui.View
             dialog.Title = "Select a list file to import:";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                Cursor.Current = Cursors.WaitCursor;
+                Application.UseWaitCursor = true;
+                Application.DoEvents();
                 SearchList(new ListImportController(dialog.FileName, ListImportController.ListType.TitleAndArtist));
-                Cursor.Current = Cursors.Default;
+                Application.UseWaitCursor = false;
+                Application.DoEvents();
             }
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string msg = string.Format("Version: {0}\nAuthor: Jonas Plamann\nGitHub: https://github.com/Poket-Jony/GMusicProxyGui\nThis software only communicates with the GMusicProxy and not directly with any Google-API.", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            string msg = string.Format("Version: {0} for GMusicProxy {1} ({2})\nAuthor: Jonas Plamann\nGitHub: https://github.com/Poket-Jony/GMusicProxyGui\nThis software only communicates with the GMusicProxy and not directly with any Google-API.", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(), GMUSICPROXY_VERSION, RELEASE_YEAR);
             MetroFramework.MetroMessageBox.Show(this, msg, "About", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
