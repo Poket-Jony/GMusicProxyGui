@@ -13,11 +13,8 @@ Please note the attached license to use this software.
 GMusicProxy: https://github.com/diraimondo/gmusicproxy
 
 ##Bugs
-- "Get my stations" not work
-- Some titles can not be downloaded
-- In the first search may occur problems
 - Playlists that do not belong to me, can not be opened
-- The server feature is very experimental
+- The server feature is curently disabled
 
 ##Screenshots
 ![GMusicProxyGui](https://github.com/Poket-Jony/GMusicProxyGui/raw/master/gmusicproxygui_screenshot_1.jpg)
