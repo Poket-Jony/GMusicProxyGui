@@ -12,11 +12,11 @@ Please note the attached license to use this software.
 
 GMusicProxy: https://github.com/diraimondo/gmusicproxy
 
-##Bugs
+## Bugs
 - Playlists that do not belong to me, can not be opened
 - The server feature is curently disabled
 
-##Screenshots
+## Screenshots
 ![GMusicProxyGui](https://github.com/Poket-Jony/GMusicProxyGui/raw/master/gmusicproxygui_screenshot_1.jpg)
 
 ![GMusicProxyGui](https://github.com/Poket-Jony/GMusicProxyGui/raw/master/gmusicproxygui_screenshot_2.jpg)
